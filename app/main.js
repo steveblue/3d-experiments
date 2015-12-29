@@ -13,7 +13,8 @@ var respond;
       'lib/angular.min.js',
       'lib/angular-ui-router.min.js',
       'lib/angular-sanitize.min.js',
-      'lib/require.js'
+      'lib/require.js',
+      'lib/three.min.js'
     )
     .ready('ALL', function() {
 

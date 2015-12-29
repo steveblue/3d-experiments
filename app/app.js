@@ -8,12 +8,15 @@
       //filters
       'filters/filters',
       //services
-      'services/basic'
+      'services/basic',
+      //components
+      'components/sketch/sketch-module'
       ],
     function (
       RouteManager,
       AppFilters,
-      BasicService
+      BasicService,
+      Sketch
     ){
 
       var app, appName = 'app';
@@ -22,7 +25,8 @@
               .module(appName, [
                 'ui.router',
                 'ngSanitize',
-                'app.filters'
+                'app.filters',
+                Sketch
               ])
               .config( RouteManager )
               .service('Basic', BasicService );

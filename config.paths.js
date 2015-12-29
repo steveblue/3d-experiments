@@ -23,7 +23,8 @@ module.exports = {
       'bower_components/es6-promise/promise.js',
       'bower_components/requirejs/require.js',
       'bower_components/requirejs-plugins/lib/text.js',
-      'bower_components/requirejs-plugins/src/json.js'
+      'bower_components/requirejs-plugins/src/json.js',
+      'bower_components/three.js/three.min.js'
     ],
     min:[
       'bower_components/angular-ui-router/release/angular-ui-router.min.js',
@@ -40,7 +41,8 @@ module.exports = {
       'bower_components/es6-promise/promise.min.js',
       'bower_components/requirejs/require.js',
       'bower_components/requirejs-plugins/lib/text.js',
-      'bower_components/requirejs-plugins/src/json.js'
+      'bower_components/requirejs-plugins/src/json.js',
+      'bower_components/three.js/three.min.js'
     ],
     dev:  devDir  + '/lib',
     prod: prodDir + '/lib'
