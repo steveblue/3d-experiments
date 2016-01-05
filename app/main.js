@@ -14,7 +14,10 @@ var respond;
       'lib/angular-ui-router.min.js',
       'lib/angular-sanitize.min.js',
       'lib/require.js',
-      'lib/three.min.js'
+      'lib/three.min.js',
+      'components/obj/OBJExporter.js',
+      'components/obj/TerrainLoader.js',
+      'components/obj/FirstPersonControls.js'
     )
     .ready('ALL', function() {
 

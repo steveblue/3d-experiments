@@ -5,7 +5,7 @@
    * Register the Controller class with RequireJS
    */
   define([
-      'components/sketch/scene.js'
+      'components/sketch/world.js'
     ],
     function (
       World
@@ -16,14 +16,18 @@
             return {
               restrict: 'AE',
               templateUrl: './components/sketch/sketch.html',
+              scope: {
+                world: '=world',
+                model: '=ngModel'
+              },
               link: {
                 pre: function(scope, elem, attrs) {
                   // Before child scopes have been linked
                 },
                 post: function(scope, elem, attrs) {
                   // after child scopes have been linked
-                  console.log(elem);
-                  var scene = new World(elem);
+                  var scene = new scope.world(scope.model, elem, false);
+
                 },
               }
             };
