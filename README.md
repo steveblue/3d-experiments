@@ -1,7 +1,9 @@
-Angular AMD Boilerplate
+# 3D Experiments
+
+Built Using the Angular AMD Boilerplate
 https://github.com/steveblue/angular-boilerplate/
 
-This project is starter code for a web app built with Angular 1.4.
+This project is built from starter code for a web app built with Angular 1.4.
 
 ## Dependencies ##
 
@@ -32,7 +34,7 @@ Clone the repo into a local folder.
 Use the following command to clone the repo, replacing [username] with your Github username.
 
 ```
-git clone https://github.com/[username]/angular-boilerplate.git
+git clone https://github.com/[username]/3d-experiments.git
 ```
 
 
