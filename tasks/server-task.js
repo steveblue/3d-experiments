@@ -3,7 +3,8 @@ var gulp      = require('gulp'),
 
     fs          = require('fs'),
     http        = require('http'),
-    connect     = require('connect'),
+    https       = require('https'),
+    express     = require('express'),
     st          = require('st'),
     livereload  = require('gulp-livereload'),
     util        = require('gulp-util'),
@@ -16,6 +17,9 @@ var gulp      = require('gulp'),
     root      = paths.rootDir,
     devRoot   = paths.devDir,
     prodRoot  = paths.prodDir,
+    key,
+    cert,
+    creds,
     config;
 
 // strict arguments, gulp dev or gulp prod determine config.
@@ -23,6 +27,9 @@ if(process.argv[2] === 'dev') {
     config = require('../settings/local/config')[0];
 } else if(process.argv[2] === 'prod') {
     config = require('../settings/prod/config')[0];
+    key  = fs.readFileSync(config.SERVER_KEY, 'utf8');
+    cert = fs.readFileSync(config.SERVER_CERT, 'utf8');
+    creds = {key: key, cert: cert};
 } else {
     config = require('../settings/local/config')[0];
 }
@@ -45,6 +52,8 @@ var options = {
         }
       },
       prod: {
+        host  : config.HOST,
+        port  : config.HOST_PORT,
         watch : [prodRoot + '/**/*.*', '!'+prodRoot+'/lib/**/*.*'],
         st    : {
           path        : prodRoot,
@@ -71,10 +80,10 @@ var fallback = function(root){
 gulp.task('server:dev:start', function(callback){
 
   // Create Connect Server
-  server = connect();
+  server = express();
 
   util.log('Local server starting up hosted at: ', util.colors.green(config.HOST));
-  util.log('Connect server listening on port: ', util.colors.green(config.HOST_PORT));
+  util.log('Express server listening on port: ', util.colors.green(config.HOST_PORT));
   util.log('Connecting to API at: ', util.colors.green(config.API_HOST));
 
   // Add serve static middleware
@@ -85,6 +94,27 @@ gulp.task('server:dev:start', function(callback){
 
   // Start Server
   http.createServer(server).listen(options.dev.port);
+
+  callback();
+});
+
+gulp.task('server:prod:start', function(callback){
+
+  // Create Connect Server
+  server = express();
+
+  util.log('Local server starting up hosted at: ', util.colors.green(config.HOST));
+  util.log('Express server listening on port: ', util.colors.green(config.HOST_PORT));
+  util.log('Connecting to API at: ', util.colors.green(config.API_HOST));
+
+  // Add serve static middleware
+  server.use( st(options.prod.st) );
+
+  // Fallback to /index.html
+  server.use(fallback(prodRoot));
+
+  // Start Server
+  https.createServer(creds, server).listen(options.prod.port);
 
   callback();
 });
@@ -106,3 +136,4 @@ gulp.task('server:lr', function(done){
 });
 
 gulp.task('server:dev', ['server:dev:start', 'server:lr']);
+gulp.task('server:prod', ['server:prod:start']);

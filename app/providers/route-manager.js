@@ -21,7 +21,7 @@
 
     var RouteManager = function ( $stateProvider, $urlRouterProvider, $locationProvider ){
 
-          $locationProvider.html5Mode(false);
+          $locationProvider.html5Mode(true);
 
           // states
           $stateProvider

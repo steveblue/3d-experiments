@@ -54,6 +54,7 @@ gulp.task('prod:build', function(callback){
     'clean:prod',
     ['copy:prod', 'copy:prod:lib', 'copy:prod:settings', 'copy:prod:assets'],
     ['sass:prod', 'uglify:prod'],
+    'server:prod',
     callback
   );
 });
