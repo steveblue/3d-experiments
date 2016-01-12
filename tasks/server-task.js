@@ -118,19 +118,22 @@ gulp.task('server:prod:start', function(callback){
   util.log('Express server listening on port: ', util.colors.green(config.HOST_PORT));
   util.log('Connecting to API at: ', util.colors.green(config.API_HOST));
 
+  server.set('trust proxy', true);
   // Add serve static middleware
   server.use( st(options.prod.st) );
+
+  server.use(function(req, res, next) {
+    if (req.headers.host.slice(0, 4) === 'www.') {
+        var newHost = req.headers.host.slice(4);
+        return res.redirect(301, req.protocol + '://' + newHost + req.originalUrl);
+    }
+    next();
+  });
 
   // Fallback to /index.html
   server.use(fallback(prodRoot));
 
-  server.use(function(req, res, next) {
-    if (req.headers.host.match(/^www/) !== null ) {
-        res.redirect('https://' + req.headers.host.replace(/^www\./, '') + req.url);
-    } else {
-        next();
-    }
-  });
+
 
   // Start Server
   https.createServer(creds, server).listen(options.prod.port);
