@@ -20,6 +20,8 @@ var gulp      = require('gulp'),
     key,
     cert,
     creds,
+    server,
+    httpServer,
     config;
 
 // strict arguments, gulp dev or gulp prod determine config.
@@ -102,6 +104,15 @@ gulp.task('server:prod:start', function(callback){
 
   // Create Connect Server
   server = express();
+  httpServer = express();
+
+  // Redirect http to https
+  httpServer.set('port', 80);
+  httpServer.get("*", function (req, res, next) {
+      res.redirect("https://" + req.headers.host + "/" + req.path);
+  });
+
+  http.createServer(httpServer).listen(80);
 
   util.log('Local server starting up hosted at: ', util.colors.green(config.HOST));
   util.log('Express server listening on port: ', util.colors.green(config.HOST_PORT));
@@ -112,6 +123,14 @@ gulp.task('server:prod:start', function(callback){
 
   // Fallback to /index.html
   server.use(fallback(prodRoot));
+
+  server.use(function(req, res, next) {
+    if (req.headers.host.match(/^www/) !== null ) {
+        res.redirect('https://' + req.headers.host.replace(/^www\./, '') + req.url);
+    } else {
+        next();
+    }
+  });
 
   // Start Server
   https.createServer(creds, server).listen(options.prod.port);
