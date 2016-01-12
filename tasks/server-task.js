@@ -125,7 +125,6 @@ gulp.task('server:prod:start', function(callback){
   // Redirect non-www
 
   server.get('/*', function(req, res, next) {
-    console.log(req.headers);
     if (req.headers.host.match(/^www/) !== null ) {
       res.redirect(301, 'http://' + req.headers.host.replace(/^www\./, '') + req.url);
     } else {
