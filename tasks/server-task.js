@@ -122,12 +122,13 @@ gulp.task('server:prod:start', function(callback){
   // Add serve static middleware
   server.use( st(options.prod.st) );
 
-  server.use(function(req, res, next) {
-    if (req.headers.host.slice(0, 4) === 'www.') {
-        var newHost = req.headers.host.slice(4);
-        return res.redirect(301, req.protocol + '://' + newHost + req.originalUrl);
+  server.use(function (req, res, next) {
+    var str = "www.";
+    if (req.host.indexOf(str) === 0) {
+      res.redirect(301, req.protocol + "://" + req.host.slice(str.length) + req.originalUrl);
+    } else {
+      next();
     }
-    next();
   });
 
   // Fallback to /index.html
