@@ -4,20 +4,24 @@
   define([
     'models/scene.js',
     'models/prism.js',
+    'models/bowie.js',
     'components/sketch/world.js',
-    'components/sketch/prism-scene.js'
+    'components/sketch/prism-scene.js',
+    'components/sketch/bowie-scene.js'
 
   ],
   function (
     TerrainModel,
     PrismModel,
+    BowieModel,
     TerrainWorld,
-    PrismWorld
+    PrismWorld,
+    BowieWorld
   ){
 
     var RouteManager = function ( $stateProvider, $urlRouterProvider, $locationProvider ){
 
-          $locationProvider.html5Mode(true);
+          $locationProvider.html5Mode(false);
 
           // states
           $stateProvider
@@ -37,6 +41,15 @@
 
                   $scope.model = PrismModel;
                   $scope.world = PrismWorld;
+
+              }
+            }).state('bowie', {
+              url: '/bowie',
+              templateUrl: 'views/default.html',
+              controller  : function($scope){
+
+                  $scope.model = BowieModel;
+                  $scope.world = BowieWorld;
 
               }
             });

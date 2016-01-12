@@ -58,7 +58,7 @@
       this.sunLight.position.multiplyScalar(1.3);
 
       this.sunLight.castShadow = true;
-      this.sunLight.shadowCameraVisible = true;
+      // this.sunLight.shadowCameraVisible = true;
 
       this.sunLight.shadowMapWidth = 512;
       this.sunLight.shadowMapHeight = 512;
