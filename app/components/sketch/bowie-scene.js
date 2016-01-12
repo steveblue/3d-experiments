@@ -43,7 +43,7 @@
 
       this.renderer = new THREE.WebGLRenderer({
         antialias: true,
-        preserveDrawingBuffer: true 
+        preserveDrawingBuffer: true
       });
       this.renderer.setClearColor(new THREE.Color(0xffffff, 1.0));
       this.renderer.setSize(s.width, s.height);
@@ -169,19 +169,24 @@
       this.movieScreen.rotation.x = 0.1;
 
       this.scene.add(this.movieScreen);
+      var screenshots = 0;
 
       var videoSnapshot = function() {
         if (localMediaStream) {
 
-
-          document.location.href = s.renderer.domElement.toDataURL("image/png").replace("image/png", "image/octet-stream");
+          var link = document.createElement('a');
+          document.querySelectorAll('.message')[0].appendChild(link);
+          screenshots++;
+          link.setAttribute('download', 'bowie-tribute-screenshot'+screenshots+'.png');
+          link.innerHTML = 'Screenshot'+ screenshots;
+          link.setAttribute('href', s.renderer.domElement.toDataURL("image/png").replace("image/png", "image/octet-stream"));
 
 
         }
       };
 
       var videoErrorCallback = function() {
-
+          alert('Please try to view this website with Google Chrome.');
       };
 
       this.renderer.domElement.addEventListener('click', videoSnapshot, false);

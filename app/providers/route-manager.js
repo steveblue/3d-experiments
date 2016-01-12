@@ -45,7 +45,7 @@
               }
             }).state('bowie', {
               url: '/bowie',
-              templateUrl: 'views/default.html',
+              templateUrl: 'views/bowie.html',
               controller  : function($scope){
 
                   $scope.model = BowieModel;

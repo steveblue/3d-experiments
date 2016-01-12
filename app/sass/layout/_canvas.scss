@@ -40,3 +40,22 @@ video {
   height: 100%;
   display:none;
 }
+
+.message {
+  position: absolute;
+  bottom: 20px;
+  z-index: 100;
+  width: 100%;
+  color: #FFFFFF;
+  font-size: 10px;
+  padding-left: 12px;
+}
+
+.message a:link, .message a:visited {
+  color: #FFFFFF;
+  position:relative;
+  display:block;
+  float:left;
+  padding-top: 6px;
+  padding-right: 6px;
+}
