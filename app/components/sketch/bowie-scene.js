@@ -78,7 +78,7 @@
         specular: 0xffffff,
         shininess: 50,
         metal: true,
-        opacity: 0.65,
+        opacity: 0.5,
         transparent: true
       });
 
@@ -115,7 +115,7 @@
         specular: 0xffffff,
         shininess: 50,
         metal: true,
-        opacity: 0.65,
+        opacity: 0.5,
         transparent: true
       });
 
