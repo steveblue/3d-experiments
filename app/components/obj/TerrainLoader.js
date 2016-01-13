@@ -52,7 +52,12 @@ THREE.TerrainLoader.prototype = {
 
 		if ( this.crossOrigin !== undefined ) request.crossOrigin = this.crossOrigin;
 
-		request.open( 'GET', url, true );
+		if ( window.location.hostname === 'localhost' ) {
+			request.open( 'GET', url, true );
+		} else {
+			request.open( 'GET', 'https://' + window.location.hostname + '/' + url, true );
+		}
+
 
 		request.responseType = 'arraybuffer';
 
