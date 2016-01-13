@@ -122,10 +122,15 @@ gulp.task('server:prod:start', function(callback){
   // Add serve static middleware
   server.use( st(options.prod.st) );
 
-  // Redirect non-www
+  // Implement CORS policy
+  server.use(function(req, res, next) {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+    next();
+  });
 
+  // Redirect non-www
   server.get('*', function(req, res, next) {
-    console.log(req);
     if ( req.headers.host !== options.prod.host ) {
       res.redirect(301, 'https://' + options.prod.host + req.url);
     } else {
