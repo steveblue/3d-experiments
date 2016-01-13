@@ -107,7 +107,7 @@ gulp.task('server:prod:start', function(callback){
   httpServer = express();
 
   // Redirect http to https
-  httpServer.set('port', 80);
+  // httpServer.set('port', 80);
   httpServer.get('*', function (req, res, next) {
       // console.log('http', req.headers.host, req.path);
       res.redirect(301, 'https://' + req.headers.host + req.path);
@@ -130,20 +130,8 @@ gulp.task('server:prod:start', function(callback){
     next();
   });
 
-  // Redirect non-www
-  // server.get('*', function(req, res, next) {
-  //   if ( req.headers.host !== options.prod.host ) {
-  //     // console.log('https', options.prod.host, req.path);
-  //     res.redirect(301, 'https://' + options.prod.host + req.path);
-  //   } else {
-  //     next();
-  //   }
-  // });
-
   // Fallback to /index.html
   server.use(fallback(prodRoot));
-
-
 
   // Start Server
   https.createServer(creds, server).listen(options.prod.port);
