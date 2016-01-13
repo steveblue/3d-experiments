@@ -58,7 +58,6 @@ THREE.TerrainLoader.prototype = {
 			request.open( 'GET', 'https://' + window.location.hostname + '/' + url, true );
 		}
 
-
 		request.responseType = 'arraybuffer';
 
 		request.send( null );
