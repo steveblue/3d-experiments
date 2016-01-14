@@ -27,7 +27,7 @@
           $stateProvider
             .state('index', {
               url: '/',
-              templateUrl: 'views/default.html',
+              templateUrl: 'views/index.html',
               controller  : function($scope){
 
                   $scope.model = TerrainModel;

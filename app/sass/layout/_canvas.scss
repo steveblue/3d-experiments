@@ -41,21 +41,33 @@ video {
   display:none;
 }
 
+header {
+  position: absolute;
+  top: 20px;
+  z-index: 100;
+  width: 100%;
+  color: #FFFFFF;
+  font-size: 1.2em;
+  padding-left: 1.5em;
+  line-height: 1.5em;
+}
+
 .message {
   position: absolute;
   bottom: 20px;
   z-index: 100;
   width: 100%;
   color: #FFFFFF;
-  font-size: 10px;
+  font-size: 0.6em;
   padding-left: 12px;
 }
 
-.message a:link, .message a:visited {
+a:link, a:visited {
   color: #FFFFFF;
   position:relative;
   display:block;
   float:left;
   padding-top: 6px;
   padding-right: 6px;
+  font-weight: 500;
 }
