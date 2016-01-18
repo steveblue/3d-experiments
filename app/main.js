@@ -15,9 +15,9 @@ var respond;
       'lib/angular-sanitize.min.js',
       'lib/require.js',
       'lib/three.min.js',
-      'components/obj/ObjExporter.js',
-      'components/obj/TerrainLoader.js',
-      'components/obj/FirstPersonControls.js'
+      'components/util/ObjExporter.js',
+      'components/util/TerrainLoader.js',
+      'components/util/FirstPersonControls.js'
     )
     .ready('ALL', function() {
 

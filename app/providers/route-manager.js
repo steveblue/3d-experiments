@@ -5,9 +5,9 @@
     'models/scene.js',
     'models/prism.js',
     'models/bowie.js',
-    'components/sketch/world.js',
-    'components/sketch/prism-scene.js',
-    'components/sketch/bowie-scene.js'
+    'components/scene/terrain-scene.js',
+    'components/scene/prism-scene.js',
+    'components/scene/bowie-scene.js'
 
   ],
   function (

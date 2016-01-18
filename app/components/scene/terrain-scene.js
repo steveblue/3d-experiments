@@ -6,7 +6,7 @@
 
   ], function() {
 
-    var World = function(Scene, elem, light, helper) {
+    var TerrainWorld = function(Scene, elem, light, helper) {
 
       var s = this,
           i = 0;
@@ -104,9 +104,6 @@
 
         this.mesh.geometry = new THREE.PlaneGeometry(ratio, ratio, ratio, ratio);
 
-
-
-
         for (var i = 0, l = this.mesh.geometry.vertices.length; i < l; i++) {
           this.mesh.geometry.vertices[i].z = data[0][i] / 65535 * 2;
           //console.log(mesh.geometry.vertices[i]);
@@ -145,7 +142,7 @@
     };
 
 
-    World.prototype.update = function() {
+    TerrainWorld.prototype.update = function() {
 
 
       this.controls.update(this.clock.getDelta());
@@ -166,7 +163,7 @@
 
     };
 
-    return World;
+    return TerrainWorld;
 
   });
 
