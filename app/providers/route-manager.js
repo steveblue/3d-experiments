@@ -2,7 +2,7 @@
   'use strict';
 
   define([
-    'models/scene.js',
+    'models/terrain.js',
     'models/prism.js',
     'models/bowie.js',
     'components/scene/terrain-scene.js',
