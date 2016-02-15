@@ -5,18 +5,24 @@
     'models/terrain.js',
     'models/prism.js',
     'models/bowie.js',
+    'models/octagon.js',
     'components/scene/terrain-scene.js',
     'components/scene/prism-scene.js',
-    'components/scene/bowie-scene.js'
+    'components/scene/bowie-scene.js',
+    'components/scene/lighting-scene.js',
+    'components/scene/octagon-scene.js'
 
   ],
   function (
     TerrainModel,
     PrismModel,
     BowieModel,
+    OctagonModel,
     TerrainWorld,
     PrismWorld,
-    BowieWorld
+    BowieWorld,
+    SunsetWorld,
+    OctagonWorld
   ){
 
     var RouteManager = function ( $stateProvider, $urlRouterProvider, $locationProvider ){
@@ -50,6 +56,43 @@
 
                   $scope.model = BowieModel;
                   $scope.world = BowieWorld;
+
+              }
+            }).state('sunset', {
+              url: '/sunset',
+              templateUrl: 'views/terrain.html',
+              controller  : function($scope){
+
+                  $scope.model = TerrainModel;
+                  $scope.world = SunsetWorld;
+
+              }
+            }).state('octagon', {
+              url: '/octagon',
+              templateUrl: 'views/octagon.html',
+              controller  : function($scope){
+
+                  $scope.model = OctagonModel;
+                  $scope.world = OctagonWorld;
+
+              }
+            }).state('header', {
+              url: '/header-content-footer',
+              templateUrl: 'views/header-content-footer.html',
+              controller  : function($scope, $scroll){
+                //
+                // $scope.model = TerrainModel;
+                // $scope.world = SunsetWorld;
+
+                $scope.sections = [];
+
+                for (var i=0; i<33; i++) {
+                  $scope.sections.push({
+                    index: i
+                  });
+                }
+
+                $scroll.start();
 
               }
             });

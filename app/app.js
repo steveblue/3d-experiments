@@ -8,15 +8,21 @@
       //filters
       'filters/filters',
       //services
-      'services/basic',
+      'services/scroll',
       //components
+      'components/header/header-module',
+      'components/nav/nav-module',
+      'components/footer/footer-module',
       'components/sketch/sketch-module'
       ],
     function (
       RouteManager,
       AppFilters,
-      BasicService,
-      Sketch
+      ScrollService,
+      GlobalHeader,
+      GlobalNav,
+      GlobalFooter,
+      SketchModule
     ){
 
       var app, appName = 'app';
@@ -26,10 +32,13 @@
                 'ui.router',
                 'ngSanitize',
                 'app.filters',
-                Sketch
+                GlobalHeader,
+                GlobalNav,
+                GlobalFooter,
+                SketchModule
               ])
               .config( RouteManager )
-              .service('Basic', BasicService );
+              .service('$scroll', ScrollService );
 
       angular.bootstrap( document.getElementsByTagName('html')[0], [ appName ]);
 

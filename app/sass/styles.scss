@@ -9,5 +9,9 @@
 @import "utilities/fonts";
 @import "utilities/mixins";
 @import "utilities/sprites";
-@import "layout/canvas";
+@import "layout/global";
+@import "components/header";
+@import "components/nav";
+@import "components/content";
+@import "components/footer";
 //@import "utilities/media-queries";
