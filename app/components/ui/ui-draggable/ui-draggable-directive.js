@@ -29,6 +29,7 @@
                 newX,
                 newY,
                 joystickPos,
+                target,
                 start,
                 stop,
                 drag,
@@ -44,8 +45,9 @@
                 component = new UIComponent(node, handle[0]);
 
               // Obtain drag options
+
               if (scope.uiOptions) {
-                console.log(scope.uiOptions);
+
                 start = scope.uiOptions.start;
                 drag = scope.uiOptions.drag;
                 stop = scope.uiOptions.stop;
@@ -60,25 +62,30 @@
                 e.preventDefault();
                 startX = e.clientX - elem[0].offsetLeft;
                 startY = e.clientY - elem[0].offsetTop;
-                $document.on('mousemove', mousemove);
-                $document.on('mouseup', mouseup);
+
+                elem.on('mousemove', mousemove);
+                elem.on('mouseup', mouseup);
                 if (start) {
                   start(e);
                 }
+
               };
 
               // Handle drag event
               var mousemove = function(e) {
-                setPosition(e.clientX - startX, e.clientY - startY);
-                if (drag) {
-                  drag(e);
-                }
+                // if(e.target === elem[0]){
+                console.log(e);
+                  setPosition(e.layerX, e.layerY);
+                  if (drag) {
+                    drag(e);
+                  }
+                // }
               };
 
               // Unbind drag events
               var mouseup = function(e) {
-                $document.unbind('mousemove', mousemove);
-                $document.unbind('mouseup', mouseup);
+                elem.unbind('mousemove', mousemove);
+                elem.unbind('mouseup', mouseup);
                 if (stop) {
                   stop(e);
                 }
@@ -123,15 +130,13 @@
 
               };
 
+              var clamp = function(value, range) {
+                return Math.max(Math.min(value, range[1]), range[0]);
+              };
+
               // Move ui--slider-handle, within elem
               var setPosition = function(x, y) {
 
-                if (scope.uiOptions.node.orient === 'is--joystick') {
-
-                  joystickPos = circularBounds(x, y, [0, elem[0].clientWidth - handle[0].offsetWidth], [0, elem[0].clientHeight - handle[0].offsetHeight]);
-                  node.translate = [joystickPos[0], joystickPos[1], 1];
-
-                } else {
 
                   if (x < 0) {
                     newX = 0;
@@ -149,9 +154,20 @@
                     newY = y;
                   }
 
-                  node.translate = [newX, newY, 1];
+                  if (scope.uiOptions.node.orient === 'is--joystick') {
 
-                }
+                    joystickPos = circularBounds(newX, newY, [1, elem[0].clientWidth - handle[0].offsetWidth], [1, elem[0].clientHeight - handle[0].offsetHeight]);
+                    newX = clamp(joystickPos[0], [1, elem[0].clientWidth - handle[0].offsetWidth]);
+                    newY = clamp(joystickPos[1], [1, elem[0].clientHeight - handle[0].offsetHeight]);
+
+                    node.translate = [newX, newY, 1];
+
+                  } else {
+                    node.translate = [newX, newY, 1];
+                  }
+
+
+                  console.log( node.translate );
 
               };
 
