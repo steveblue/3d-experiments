@@ -20,8 +20,11 @@
               link: {
                 pre: function(scope, elem, attrs) {
                   // Before child scopes have been linked
-                  scope.uiOptions = {
+                  var options = JSON.parse(attrs.uiNode);
 
+                  scope.uiOptions = {
+                      node: options,
+                      orient: options.type || 'is--vert',
                       start: function(e) {
                         console.log('START');
                       },
@@ -31,7 +34,7 @@
                       stop: function(e) {
                         console.log('STOP');
                       },
-                      orient: attrs.uiOrient || 'is--vert'
+
                   };
                 },
                 post: function(scope, elem, attrs) {

@@ -45,10 +45,12 @@
 
               // Obtain drag options
               if (scope.uiOptions) {
-
+                console.log(scope.uiOptions);
                 start = scope.uiOptions.start;
                 drag = scope.uiOptions.drag;
                 stop = scope.uiOptions.stop;
+                node = scope.uiOptions.node;
+                component = new UIComponent(node, handle[0]);
 
               }
 
@@ -124,7 +126,7 @@
               // Move ui--slider-handle, within elem
               var setPosition = function(x, y) {
 
-                if (scope.uiOptions.orient === 'is--joystick') {
+                if (scope.uiOptions.node.orient === 'is--joystick') {
 
                   joystickPos = circularBounds(x, y, [0, elem[0].clientWidth - handle[0].offsetWidth], [0, elem[0].clientHeight - handle[0].offsetHeight]);
                   node.translate = [joystickPos[0], joystickPos[1], 1];
@@ -156,7 +158,7 @@
               handle.on('mousedown', mousedown);
               //TODO: Handle Touch Events
 
-              if (scope.uiOptions.orient === 'is--joystick') {
+              if (scope.uiOptions.node.orient === 'is--joystick') {
                 setPosition((elem[0].clientWidth / 2), elem[0].clientHeight / 2);
                 //TODO: Fix so that the handle resolves to the center
               }

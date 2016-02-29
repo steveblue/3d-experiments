@@ -93,6 +93,37 @@
                 $scope.model = MirrorModel;
                 $scope.world = MirrorWorld;
 
+                $scope.sliderVertNode = {
+                  orient: 'is--vert',
+                  origin: [0.0, 0.0, 0.0],
+                  translate: [0.0, 0.0, 0.0],
+                  size: [44, 44, 1.0],
+                  scale: [1.0, 1.0, 1.0],
+                  rotate: [0, 0, 0],
+                  opacity: 0.3
+                };
+
+                $scope.sliderHorNode = {
+                  orient: 'is--hor',
+                  origin: [0.0, 0.0, 0.0],
+                  translate: [0.0, 0.0, 0.0],
+                  size: [44, 44, 1.0],
+                  scale: [1.0, 1.0, 1.0],
+                  rotate: [0, 0, 0],
+                  opacity: 0.3
+                };
+
+                $scope.sliderJoystickNode = {
+                  orient: 'is--joystick',
+                  origin: [0.0, 0.0, 0.0],
+                  translate: [0.0, 0.0, 0.0],
+                  size: [44, 44, 1.0],
+                  scale: [1.0, 1.0, 1.0],
+                  rotate: [0, 0, 0],
+                  opacity: 0.3
+                };
+
+
               }
             })
             .state('octagon', {
