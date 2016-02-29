@@ -5,10 +5,12 @@
     'models/terrain.js',
     'models/prism.js',
     'models/bowie.js',
+    'models/mirror.js',
     'models/octagon.js',
     'components/scene/terrain-scene.js',
     'components/scene/prism-scene.js',
     'components/scene/bowie-scene.js',
+    'components/scene/mirror-scene.js',
     'components/scene/lighting-scene.js',
     'components/scene/octagon-scene.js'
 
@@ -17,10 +19,12 @@
     TerrainModel,
     PrismModel,
     BowieModel,
+    MirrorModel,
     OctagonModel,
     TerrainWorld,
     PrismWorld,
     BowieWorld,
+    MirrorWorld,
     SunsetWorld,
     OctagonWorld
   ){
@@ -40,7 +44,8 @@
                   $scope.world = TerrainWorld;
 
               }
-            }).state('prism', {
+            })
+            .state('prism', {
               url: '/prism',
               templateUrl: 'views/default.html',
               controller  : function($scope){
@@ -49,7 +54,8 @@
                   $scope.world = PrismWorld;
 
               }
-            }).state('bowie', {
+            })
+            .state('bowie', {
               url: '/bowie',
               templateUrl: 'views/bowie.html',
               controller  : function($scope){
@@ -58,7 +64,18 @@
                   $scope.world = BowieWorld;
 
               }
-            }).state('sunset', {
+            })
+            .state('mirror', {
+              url: '/mirror',
+              templateUrl: 'views/mirror.html',
+              controller  : function($scope){
+
+                  $scope.model = MirrorModel;
+                  $scope.world = MirrorWorld;
+
+              }
+            })
+            .state('sunset', {
               url: '/sunset',
               templateUrl: 'views/terrain.html',
               controller  : function($scope){
@@ -67,7 +84,18 @@
                   $scope.world = SunsetWorld;
 
               }
-            }).state('octagon', {
+            })
+            .state('ui', {
+              url: '/ui',
+              templateUrl: 'views/ui.html',
+              controller  : function($scope){
+
+                $scope.model = MirrorModel;
+                $scope.world = MirrorWorld;
+
+              }
+            })
+            .state('octagon', {
               url: '/octagon',
               templateUrl: 'views/octagon.html',
               controller  : function($scope){
@@ -76,7 +104,8 @@
                   $scope.world = OctagonWorld;
 
               }
-            }).state('header', {
+            })
+            .state('header', {
               url: '/header-content-footer',
               templateUrl: 'views/header-content-footer.html',
               controller  : function($scope, $scroll){

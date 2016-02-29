@@ -62,9 +62,8 @@
                   '/assets/skybox/negx.jpg' ];
 
       cubeTexLoader.load( urls, function(tex) {
-
           var cubeShader = THREE.ShaderLib.cube;
-          // tex.generateMipmaps = false;
+
           cubeShader.uniforms.tCube.value = tex;
 
           var skyBoxMaterial = new THREE.ShaderMaterial({
@@ -90,9 +89,10 @@
 
       this.sunLight.castShadow = true;
       // this.sunLight.shadowCameraVisible = true;
+      this.sunLightHelper = new THREE.CameraHelper( this.sunLight.shadow.camera );
 
-      this.sunLight.shadowMapWidth = 512;
-      this.sunLight.shadowMapHeight = 512;
+      this.sunLight.shadow.mapSize.width = 512;
+      this.sunLight.shadow.mapSize.height = 512;
 
       this.sunLight.lookAt( new THREE.Vector3(0,0,0) );
       //

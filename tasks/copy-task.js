@@ -39,7 +39,7 @@ gulp.task('uglify:dev', function(){
 
 // Copy lib for dev
 gulp.task('copy:dev:lib', function(){
-  return gulp.src(lib.min, {cwd: root})
+  return gulp.src(lib.src, {cwd: root})
     .pipe(plumber())
     .pipe(gulp.dest(lib.dev));
 });

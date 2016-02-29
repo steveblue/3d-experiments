@@ -38,7 +38,7 @@
                   };
 
                   var scrollHandler = function(ev) {
-  
+
                     if( ev.detail.hitEnd || ev.detail.hitStart ) {
                       showHeader();
                     }

@@ -13,7 +13,8 @@
       'components/header/header-module',
       'components/nav/nav-module',
       'components/footer/footer-module',
-      'components/sketch/sketch-module'
+      'components/sketch/sketch-module',
+      'components/ui/ui-component-module'
       ],
     function (
       RouteManager,
@@ -22,7 +23,8 @@
       GlobalHeader,
       GlobalNav,
       GlobalFooter,
-      SketchModule
+      SketchModule,
+      UIComponentModule
     ){
 
       var app, appName = 'app';
@@ -35,7 +37,8 @@
                 GlobalHeader,
                 GlobalNav,
                 GlobalFooter,
-                SketchModule
+                SketchModule,
+                UIComponentModule
               ])
               .config( RouteManager )
               .service('$scroll', ScrollService );

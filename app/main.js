@@ -10,9 +10,9 @@ var respond;
 
   head
     .load(
-      'lib/angular.min.js',
-      'lib/angular-ui-router.min.js',
-      'lib/angular-sanitize.min.js',
+      'lib/angular.js',
+      'lib/angular-ui-router.js',
+      'lib/angular-sanitize.js',
       'lib/require.js',
       'lib/three.min.js',
       'components/util/ObjExporter.js',

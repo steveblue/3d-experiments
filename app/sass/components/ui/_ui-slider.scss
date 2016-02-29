@@ -1,0 +1,49 @@
+.ui--slider {
+  position:relative;
+  float:left;
+  .ui--slider-container {
+    display: block;
+    width: 46px;
+    height: 320px;
+    // background: rgba(222,222,222,0.2);
+    transform: translateZ(0);
+    z-index: 1000;
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 22px;
+    .ui--slider-range {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+    .ui--slider-handle {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: url('/assets/ui/slider-control-icon.svg');
+      background-size: 44px 44px;
+      background-repeat: no-repeat;
+      // -webkit-box-shadow: 0px 2px 48px -3px rgba(0,0,0,0.63);
+      // -moz-box-shadow: 0px 2px 48px -3px rgba(0,0,0,0.63);
+      // box-shadow: 0px 2px 48px -3px rgba(0,0,0,0.63);
+    }
+  }
+  &.is--hor {
+    .ui--slider-container {
+      width: 320px;
+      height: 46px;
+    }
+  }
+  &.is--vert {
+    .ui--slider-container {
+      width: 46px;
+      height: 320px;
+    }
+  }
+  &.is--joystick {
+    .ui--slider-container {
+      width: 320px;
+      height: 320px;
+      border-radius: 50%;
+    }
+  }
+}
