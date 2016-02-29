@@ -20,19 +20,19 @@
               link: {
                 pre: function(scope, elem, attrs) {
                   // Before child scopes have been linked
-                  var options = JSON.parse(attrs.uiNode);
-
+                  var node = JSON.parse(attrs.uiNode);
+                  console.log(node);
                   scope.uiOptions = {
-                      node: options,
-                      orient: options.type || 'is--vert',
+                      node: node,
+                      orient: node.type || 'is--vert',
                       start: function(e) {
-                        console.log('START');
+                        // console.log('START');
                       },
                       drag: function(e) {
-                        console.log('DRAG');
+                        // console.log('DRAG');
                       },
                       stop: function(e) {
-                        console.log('STOP');
+                        // console.log('STOP');
                       },
 
                   };

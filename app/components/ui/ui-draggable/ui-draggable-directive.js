@@ -62,7 +62,6 @@
                 e.preventDefault();
                 startX = e.clientX - elem[0].offsetLeft;
                 startY = e.clientY - elem[0].offsetTop;
-
                 elem.on('mousemove', mousemove);
                 elem.on('mouseup', mouseup);
                 if (start) {
@@ -74,7 +73,6 @@
               // Handle drag event
               var mousemove = function(e) {
                 // if(e.target === elem[0]){
-                console.log(e);
                   setPosition(e.layerX, e.layerY);
                   if (drag) {
                     drag(e);
@@ -137,37 +135,52 @@
               // Move ui--slider-handle, within elem
               var setPosition = function(x, y) {
 
-
-                  if (x < 0) {
-                    newX = 0;
-                  } else if (x > elem[0].clientWidth - handle[0].offsetWidth) {
-                    newX = elem[0].clientWidth - handle[0].offsetWidth;
-                  } else {
-                    newX = x;
-                  }
-
-                  if (y < 0) {
-                    newY = 0;
-                  } else if (y > elem[0].clientHeight - handle[0].offsetHeight) {
-                    newY = elem[0].clientHeight - handle[0].offsetHeight;
-                  } else {
-                    newY = y;
-                  }
-
                   if (scope.uiOptions.node.orient === 'is--joystick') {
 
-                    joystickPos = circularBounds(newX, newY, [1, elem[0].clientWidth - handle[0].offsetWidth], [1, elem[0].clientHeight - handle[0].offsetHeight]);
-                    newX = clamp(joystickPos[0], [1, elem[0].clientWidth - handle[0].offsetWidth]);
-                    newY = clamp(joystickPos[1], [1, elem[0].clientHeight - handle[0].offsetHeight]);
+                    if (x <= 0) {
+                      newX = 0;
+                    } else if (x > 200) {
+                      newX = 200;
+                    } else {
+                      newX = x;
+                    }
+
+                    if (y <= 0) {
+                      newY = 0;
+                    } else if (y > 200) {
+                      newY = 200;
+                    } else {
+                      newY = y;
+                    }
+
+                    joystickPos = circularBounds(newX, newY, [0, 200 - handle[0].offsetWidth], [0, 200 - handle[0].offsetHeight]);
+                    newX = clamp(joystickPos[0], [0, 200 - handle[0].offsetWidth]);
+                    newY = clamp(joystickPos[1], [0, 200 - handle[0].offsetHeight]);
 
                     node.translate = [newX, newY, 1];
+                    //TODO: figure out why width and height need to be hardcoded.
 
                   } else {
+
+                    if (x <= 0) {
+                      newX = 0;
+                    } else if (x > elem[0].clientWidth - handle[0].offsetWidth) {
+                      newX = elem[0].clientWidth - handle[0].offsetWidth;
+                    } else {
+                      newX = x;
+                    }
+
+                    if (y <= 0) {
+                      newY = 0;
+                    } else if (y > elem[0].clientHeight - handle[0].offsetHeight) {
+                      newY = elem[0].clientHeight - handle[0].offsetHeight;
+                    } else {
+                      newY = y;
+                    }
+
                     node.translate = [newX, newY, 1];
                   }
 
-
-                  console.log( node.translate );
 
               };
 
@@ -175,8 +188,7 @@
               //TODO: Handle Touch Events
 
               if (scope.uiOptions.node.orient === 'is--joystick') {
-                setPosition((elem[0].clientWidth / 2), elem[0].clientHeight / 2);
-                //TODO: Fix so that the handle resolves to the center
+                setPosition(100 - ( handle[0].offsetWidth / 2 ), 100 - ( handle[0].offsetHeight / 2 ));
               }
 
             },

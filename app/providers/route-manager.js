@@ -94,32 +94,35 @@
                 $scope.world = MirrorWorld;
 
                 $scope.sliderVertNode = {
+                  currentValue : 0.0,
+                  min: 0.0,
+                  max: 255.0,
                   orient: 'is--vert',
                   origin: [0.0, 0.0, 0.0],
                   translate: [0.0, 0.0, 0.0],
                   size: [44, 44, 1.0],
-                  scale: [1.0, 1.0, 1.0],
-                  rotate: [0, 0, 0],
                   opacity: 0.3
                 };
 
                 $scope.sliderHorNode = {
+                  currentValue : 0.0,
+                  min: 0.0,
+                  max: 255.0,
                   orient: 'is--hor',
                   origin: [0.0, 0.0, 0.0],
                   translate: [0.0, 0.0, 0.0],
                   size: [44, 44, 1.0],
-                  scale: [1.0, 1.0, 1.0],
-                  rotate: [0, 0, 0],
                   opacity: 0.3
                 };
 
                 $scope.sliderJoystickNode = {
+                  currentValue : [0.0, 0.0],
+                  min: [0.0, 0.0],
+                  max: [100.0, 100.0],
                   orient: 'is--joystick',
                   origin: [0.0, 0.0, 0.0],
                   translate: [0.0, 0.0, 0.0],
                   size: [44, 44, 1.0],
-                  scale: [1.0, 1.0, 1.0],
-                  rotate: [0, 0, 0],
                   opacity: 0.3
                 };
 
