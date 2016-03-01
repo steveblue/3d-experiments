@@ -3,13 +3,11 @@
   float:left;
   .ui--slider-container {
     display: block;
-    width: 46px;
-    height: 320px;
     // background: rgba(222,222,222,0.2);
     transform: translateZ(0);
     z-index: 1000;
     border: 1px solid rgba(255,255,255,0.2);
-    border-radius: 22px;
+    border-radius: 12px;
     .ui--slider-range {
       width: 100%;
       height: 100%;
@@ -17,8 +15,8 @@
       cursor: crosshair;
     }
     .ui--slider-handle {
-      width: 44px;
-      height: 44px;
+      width: 32px;
+      height: 32px;
       border-radius: 50%;
       background: url('/assets/ui/slider-control-icon-transparent-01.svg');
       background-size: 44px 44px;
@@ -31,7 +29,7 @@
   &.is--hor {
     .ui--slider-container {
       width: 200px;
-      height: 46px;
+      height: 32px;
       .ui--slider-handle {
         background: url('/assets/ui/slider-control-icon-transparent-hor-01.svg');
       }
@@ -39,7 +37,7 @@
   }
   &.is--vert {
     .ui--slider-container {
-      width: 46px;
+      width: 32px;
       height: 200px;
       .ui--slider-handle {
         background: url('/assets/ui/slider-control-icon-transparent-vert-01.svg');
@@ -51,6 +49,10 @@
       width: 200px;
       height: 200px;
       border-radius: 50%;
+      .ui--slider-handle {
+        width: 32px;
+        height: 32px;
+      }
     }
   }
 }

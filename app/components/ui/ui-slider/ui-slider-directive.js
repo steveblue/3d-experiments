@@ -16,31 +16,18 @@
             return {
               restrict: 'AE',
               templateUrl: './components/ui/ui-slider/ui-slider.html',
-              scope: {},
+              requires: 'ngModel',
+              scope: {
+                uiOptions: '=ngModel'
+              },
               link: {
                 pre: function(scope, elem, attrs) {
                   // Before child scopes have been linked
-                  var node = JSON.parse(attrs.uiNode);
-                  console.log(node);
-                  scope.uiOptions = {
-                      node: node,
-                      orient: node.type || 'is--vert',
-                      start: function(e) {
-                        // console.log('START');
-                      },
-                      drag: function(e) {
-                        // console.log('DRAG');
-                      },
-                      stop: function(e) {
-                        // console.log('STOP');
-                      },
-
-                  };
                 },
                 post: function(scope, elem, attrs) {
                   // after child scopes have been linked
 
-                },
+                }
               }
             };
           }; // End Directive def

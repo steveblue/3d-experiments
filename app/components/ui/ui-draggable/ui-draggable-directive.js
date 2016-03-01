@@ -15,8 +15,9 @@
         // Returns Directive Creation Object
         return {
           restrict: 'A',
+          requires: 'ngModel',
           scope: {
-            uiOptions: '=uiDraggable'
+            uiOptions: '=ngModel'
           },
           link: {
             pre: function(scope, elem, attrs) {
@@ -33,26 +34,18 @@
                 start,
                 stop,
                 drag,
-                handle = elem.find('div'),
-                node = {
-                  origin: [0.0, 0.0, 0.0],
-                  translate: [0.0, 0.0, 0.0],
-                  size: [44, 44, 1.0],
-                  scale: [1.0, 1.0, 1.0],
-                  rotate: [0, 0, 0],
-                  opacity: 0.3
-                },
-                component = new UIComponent(node, handle[0]);
+                component,
+                handle = elem.find('div');
 
               // Obtain drag options
 
               if (scope.uiOptions) {
 
+                console.log( scope.uiOptions );
                 start = scope.uiOptions.start;
                 drag = scope.uiOptions.drag;
                 stop = scope.uiOptions.stop;
-                node = scope.uiOptions.node;
-                component = new UIComponent(node, handle[0]);
+                component = new UIComponent(scope.uiOptions.node, handle[0]);
 
               }
 
@@ -135,7 +128,7 @@
               // Move ui--slider-handle, within elem
               var setPosition = function(x, y) {
 
-                  if (scope.uiOptions.node.orient === 'is--joystick') {
+                  if (scope.uiOptions.orient === 'is--joystick') {
 
                     if (x <= 0) {
                       newX = 0;
@@ -157,7 +150,7 @@
                     newX = clamp(joystickPos[0], [0, 200 - handle[0].offsetWidth]);
                     newY = clamp(joystickPos[1], [0, 200 - handle[0].offsetHeight]);
 
-                    node.translate = [newX, newY, 1];
+                    scope.uiOptions.node.translate = [newX, newY, 1];
                     //TODO: figure out why width and height need to be hardcoded.
 
                   } else {
@@ -178,7 +171,7 @@
                       newY = y;
                     }
 
-                    node.translate = [newX, newY, 1];
+                    scope.uiOptions.node.translate = [newX, newY, 1];
                   }
 
 
@@ -187,7 +180,7 @@
               handle.on('mousedown', mousedown);
               //TODO: Handle Touch Events
 
-              if (scope.uiOptions.node.orient === 'is--joystick') {
+              if (scope.uiOptions.orient === 'is--joystick') {
                 setPosition(100 - ( handle[0].offsetWidth / 2 ), 100 - ( handle[0].offsetHeight / 2 ));
               }
 

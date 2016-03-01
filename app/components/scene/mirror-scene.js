@@ -102,12 +102,16 @@
       var videoSnapshot = function() {
         if (localMediaStream) {
 
-          var link = document.createElement('a');
-          document.querySelectorAll('.message')[0].appendChild(link);
-          screenshots++;
-          link.setAttribute('download', 'bowie-tribute-screenshot'+screenshots+'.png');
-          link.innerHTML = 'Screenshot'+ screenshots;
-          link.setAttribute('href', s.renderer.domElement.toDataURL("image/png").replace("image/png", "image/octet-stream"));
+          if(document.querySelectorAll('.message')[0]) {
+
+            var link = document.createElement('a');
+            document.querySelectorAll('.message')[0].appendChild(link);
+            screenshots++;
+            link.setAttribute('download', 'bowie-tribute-screenshot'+screenshots+'.png');
+            link.innerHTML = 'Screenshot'+ screenshots;
+            link.setAttribute('href', s.renderer.domElement.toDataURL("image/png").replace("image/png", "image/octet-stream"));
+
+          }
 
 
         }

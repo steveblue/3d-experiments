@@ -98,10 +98,21 @@
                   min: 0.0,
                   max: 255.0,
                   orient: 'is--vert',
-                  origin: [0.0, 0.0, 0.0],
-                  translate: [0.0, 0.0, 0.0],
-                  size: [44, 44, 1.0],
-                  opacity: 0.3
+                  node: {
+                    origin: [0.0, 0.0, 0.0],
+                    translate: [0.0, 0.0, 0.0],
+                    size: [44, 44, 1.0],
+                    opacity: 0.3
+                  },
+                  start: function(e) {
+                    // console.log('START');
+                  },
+                  drag: function(e) {
+                    // console.log('DRAG');
+                  },
+                  stop: function(e) {
+                    // console.log('STOP');
+                  }
                 };
 
                 $scope.sliderHorNode = {
@@ -109,10 +120,21 @@
                   min: 0.0,
                   max: 255.0,
                   orient: 'is--hor',
-                  origin: [0.0, 0.0, 0.0],
-                  translate: [0.0, 0.0, 0.0],
-                  size: [44, 44, 1.0],
-                  opacity: 0.3
+                  node: {
+                    origin: [0.0, 0.0, 0.0],
+                    translate: [0.0, 0.0, 0.0],
+                    size: [32, 32, 1.0],
+                    opacity: 0.3
+                  },
+                  start: function(e) {
+                    // console.log('START');
+                  },
+                  drag: function(e) {
+                    // console.log('DRAG');
+                  },
+                  stop: function(e) {
+                    // console.log('STOP');
+                  }
                 };
 
                 $scope.sliderJoystickNode = {
@@ -120,10 +142,21 @@
                   min: [0.0, 0.0],
                   max: [100.0, 100.0],
                   orient: 'is--joystick',
-                  origin: [0.0, 0.0, 0.0],
-                  translate: [0.0, 0.0, 0.0],
-                  size: [44, 44, 1.0],
-                  opacity: 0.3
+                  node: {
+                    origin: [0.0, 0.0, 0.0],
+                    translate: [0.0, 0.0, 0.0],
+                    size: [44, 44, 1.0],
+                    opacity: 0.3
+                  },
+                  start: function(e) {
+                    // console.log('START');
+                  },
+                  drag: function(e) {
+                    // console.log('DRAG');
+                  },
+                  stop: function(e) {
+                    // console.log('STOP');
+                  }
                 };
 
 
