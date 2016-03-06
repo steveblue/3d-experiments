@@ -129,7 +129,7 @@
                   max: 255.0,
                   orient: 'is--vert',
                   node: {
-                    origin: [0.0, 0.0, 0.0],
+                    origin: [0.5, 0.5, 0.0],
                     translate: [0.0, 0.0, 0.0],
                     size: [44, 44, 1.0],
                     opacity: 0.3
@@ -167,7 +167,7 @@
                   container: {
                     origin: [0.0, 1.0, 0.0],
                     align: [0.0,1.0,0.0],
-                    translate: [-10,-10,1],
+                    translate: [20,-10,1],
                     size: [200, 200, 1.0],
                     opacity: 1.0,
                     log: true
@@ -189,7 +189,7 @@
                   max: [100.0, 100.0],
                   orient: 'is--joystick',
                   node: {
-                    origin: [0.0, 0.0, 0.0],
+                    origin: [0.5, 0.5, 0.0],
                     translate: [0.0, 0.0, 0.0],
                     size: [44, 44, 1.0],
                     opacity: 0.3
@@ -197,7 +197,7 @@
                   container: {
                     origin: [1.0, 1.0, 0.0],
                     align: [1.0,1.0,0.0],
-                    translate: [-10,-10,1],
+                    translate: [-20,-10,1],
                     size: [200, 200, 1.0],
                     opacity: 1.0,
                     log: true
@@ -213,6 +213,7 @@
                   }
                 };
 
+    
 
               }
             })

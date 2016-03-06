@@ -532,10 +532,12 @@ if(!Object.observe){
 
         } else {
 
+
         var matrix = new Matrix();
 
 
         if(node.translate && node.align) {
+
           node.align[0] = (this.elem.parentNode.clientWidth * node.align[0])-(node.size[0] * node.origin[0])+node.translate[0];
           node.align[1] = (this.elem.parentNode.clientHeight * node.align[1])-(node.size[1] * node.origin[1])+node.translate[1];
           node.align[2] = (node.align[2] + node.translate[2] === 0 ? 1 : node.translate[2]);
