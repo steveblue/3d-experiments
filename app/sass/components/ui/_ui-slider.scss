@@ -1,12 +1,20 @@
+.ui--control-container {
+  position: absolute;
+  width: 100%;
+  height: 240px;
+  bottom: 0px;
+  background: rgba(0, 0, 0, 0.95);
+  z-index: 1000;
+}
+
 .ui--slider {
-  position:relative;
-  float:left;
+
   .ui--slider-container {
     display: block;
     // background: rgba(222,222,222,0.2);
     transform: translateZ(0);
     z-index: 1000;
-    border: 1px solid rgba(255,255,255,0.2);
+      border: 1px solid rgba(255,255,255,0.2);
     border-radius: 12px;
     .ui--slider-range {
       width: 100%;

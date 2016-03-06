@@ -377,6 +377,12 @@ if(!Object.observe){
           this.node = node;
           this.elem = elem;
 
+          this.elem.classList.add('ui--node');
+          this.elem.style.position = 'absolute';
+          this.elem.style.top = '0px';
+          this.elem.style.left = '0px';
+          this.elem.parentNode.style.position = 'absolute';
+
           Object.observe(this.node, function(changes){
               this.transform(this.node);
           }.bind(this));
@@ -428,6 +434,7 @@ if(!Object.observe){
           this.vendor = prefix();
 
           this.transform(this.node);
+
       };
 
 
@@ -439,6 +446,7 @@ if(!Object.observe){
         n.scale = n.scale || [1.0,1.0,1.0];
         n.rotate = n.rotate || [0,0,0];
         n.opacity = n.opacity || 1.0;
+        n.log = n.log || false;
 
       };
 
@@ -474,6 +482,7 @@ if(!Object.observe){
 
         }
 
+        this.elem.style[this.vendor.origin] = '0% 0% 0';
 
         if(node.size) {
 
@@ -525,13 +534,20 @@ if(!Object.observe){
 
         var matrix = new Matrix();
 
-        if(node.translate && node.align) {
 
-          matrix = matrix.translate((node.align[0] * this.elem.parentNode.clientWidth)+node.translate[0], (node.align[1] * this.elem.parentNode.clientHeight)+node.translate[1], node.align[2]+ node.translate[2] === 0 ? 1 : node.translate[2] );
+        if(node.translate && node.align) {
+          node.align[0] = (this.elem.parentNode.clientWidth * node.align[0])-(node.size[0] * node.origin[0])+node.translate[0];
+          node.align[1] = (this.elem.parentNode.clientHeight * node.align[1])-(node.size[1] * node.origin[1])+node.translate[1];
+          node.align[2] = (node.align[2] + node.translate[2] === 0 ? 1 : node.translate[2]);
+          matrix = matrix.translate( node.align[0], node.align[1], node.align[2] );
 
         } else if(node.align) {
 
-          matrix = matrix.translate(node.align[0] * this.elem.parentNode.clientWidth, node.align[1] * this.elem.parentNode.clientHeight, node.align[2] );
+
+          node.align[0] = (this.elem.parentNode.clientWidth * node.align[0])-(node.size[0] * node.origin[0]);
+          node.align[1] = (this.elem.parentNode.clientHeight * node.align[1])-(node.size[1] * node.origin[1]);
+          node.align[2] = (node.align[2] * 100);
+          matrix = matrix.translate(node.align[0], node.align[1], node.align[2] );
 
         } else if(node.translate) {
 

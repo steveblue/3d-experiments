@@ -104,6 +104,14 @@
                     size: [44, 44, 1.0],
                     opacity: 0.3
                   },
+                  container: {
+                    origin: [0.0, 1.0, 0.0],
+                    align: [0.5,1.0,0.0],
+                    translate: [0,-20,1],
+                    size: [200, 200, 1.0],
+                    opacity: 1.0,
+                    log: true
+                  },
                   start: function(e) {
                     // console.log('START');
                   },
@@ -119,12 +127,20 @@
                   currentValue : 0.0,
                   min: 0.0,
                   max: 255.0,
-                  orient: 'is--hor',
+                  orient: 'is--vert',
                   node: {
                     origin: [0.0, 0.0, 0.0],
                     translate: [0.0, 0.0, 0.0],
-                    size: [32, 32, 1.0],
+                    size: [44, 44, 1.0],
                     opacity: 0.3
+                  },
+                  container: {
+                    origin: [0.0, 1.0, 0.0],
+                    align: [0.5,1.0,0.0],
+                    translate: [44,-20,1],
+                    size: [200, 200, 1.0],
+                    opacity: 1.0,
+                    log: true
                   },
                   start: function(e) {
                     // console.log('START');
@@ -137,7 +153,37 @@
                   }
                 };
 
-                $scope.sliderJoystickNode = {
+                $scope.sliderLeftJoystickNode = {
+                  currentValue : [0.0, 0.0],
+                  min: [0.0, 0.0],
+                  max: [100.0, 100.0],
+                  orient: 'is--joystick',
+                  node: {
+                    origin: [1.0, 1.0, 0.0],
+                    translate: [0.0, 0.0, 0.0],
+                    size: [44, 44, 1.0],
+                    opacity: 0.3
+                  },
+                  container: {
+                    origin: [0.0, 1.0, 0.0],
+                    align: [0.0,1.0,0.0],
+                    translate: [-10,-10,1],
+                    size: [200, 200, 1.0],
+                    opacity: 1.0,
+                    log: true
+                  },
+                  start: function(e) {
+                    // console.log('START');
+                  },
+                  drag: function(e) {
+                    // console.log('DRAG');
+                  },
+                  stop: function(e) {
+                    // console.log('STOP');
+                  }
+                };
+
+                $scope.sliderRightJoystickNode = {
                   currentValue : [0.0, 0.0],
                   min: [0.0, 0.0],
                   max: [100.0, 100.0],
@@ -147,6 +193,14 @@
                     translate: [0.0, 0.0, 0.0],
                     size: [44, 44, 1.0],
                     opacity: 0.3
+                  },
+                  container: {
+                    origin: [1.0, 1.0, 0.0],
+                    align: [1.0,1.0,0.0],
+                    translate: [-10,-10,1],
+                    size: [200, 200, 1.0],
+                    opacity: 1.0,
+                    log: true
                   },
                   start: function(e) {
                     // console.log('START');

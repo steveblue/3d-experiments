@@ -4,17 +4,16 @@
 	 viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
 <style type="text/css">
 	.st0{display:none;}
-	.st1{display:inline;fill:#D1D3D4;}
-	.st2{fill:none;stroke:#FFFFFF;stroke-width:5;stroke-miterlimit:10;}
-	.st3{display:inline;fill:none;stroke:#FFFFFF;stroke-width:5;stroke-miterlimit:10;}
+	.st1{display:inline;fill:none;stroke:#FFFFFF;stroke-width:8;stroke-miterlimit:10;}
+	.st2{fill:none;stroke:#FFFFFF;stroke-width:8;stroke-miterlimit:10;}
 </style>
 <g id="Layer_1" class="st0">
-	<circle class="st1" cx="256" cy="256" r="252.3"/>
+	<circle class="st1" cx="256" cy="256" r="245.2"/>
 </g>
 <g id="Layer_2">
 	<line class="st2" x1="256" y1="3.7" x2="256" y2="508.3"/>
 </g>
 <g id="Layer_3" class="st0">
-	<line class="st3" x1="508.3" y1="256" x2="3.7" y2="256"/>
+	<line class="st1" x1="508.3" y1="256" x2="3.7" y2="256"/>
 </g>
 </svg>

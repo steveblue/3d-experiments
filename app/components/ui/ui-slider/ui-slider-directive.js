@@ -5,10 +5,10 @@
    * Register the Controller class with RequireJS
    */
   define([
-      // Deps,
+      'components/ui/util/ui-component'
     ],
     function (
-      // Deps Vars
+      UIComponent
     ){
 
       var SliderDirective = function( /* angular deps injection */ ){
@@ -26,6 +26,12 @@
                 },
                 post: function(scope, elem, attrs) {
                   // after child scopes have been linked
+
+                  if(scope.uiOptions.container) {
+                      var component = new UIComponent(scope.uiOptions.container, elem[0]);
+                  }
+
+
 
                 }
               }

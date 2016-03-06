@@ -41,7 +41,6 @@
 
               if (scope.uiOptions) {
 
-                console.log( scope.uiOptions );
                 start = scope.uiOptions.start;
                 drag = scope.uiOptions.drag;
                 stop = scope.uiOptions.stop;
@@ -65,12 +64,12 @@
 
               // Handle drag event
               var mousemove = function(e) {
-                // if(e.target === elem[0]){
-                  setPosition(e.layerX, e.layerY);
+                if(e.target === elem[0]){
+                  setPosition(e.offsetX, e.offsetY);
                   if (drag) {
                     drag(e);
                   }
-                // }
+                }
               };
 
               // Unbind drag events
