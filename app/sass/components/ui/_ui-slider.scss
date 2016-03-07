@@ -1,12 +1,3 @@
-.ui--control-container {
-  position: absolute;
-  width: 100%;
-  height: 240px;
-  bottom: 0px;
-  background: rgba(0, 0, 0, 0.95);
-  z-index: 1000;
-}
-
 .ui--slider {
 
   .ui--slider-container {
@@ -62,7 +53,7 @@
       width: 200px;
       height: 200px;
       border-radius: 50%;
-      cursor: url('/assets/ui/slider-control-icon-transparent-cursor.png') 0 0, pointer;
+      cursor: url('/assets/ui/slider-control-icon-transparent-cursor.png') 22 22, pointer;
       .ui--slider-handle {
         width: 32px;
         height: 32px;

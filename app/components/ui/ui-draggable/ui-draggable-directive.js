@@ -35,15 +35,17 @@
                 stop,
                 drag,
                 component,
+                touchTransform,
+                touchItem,
                 handle = elem.find('div');
 
               // Obtain drag options
 
               if (scope.uiOptions) {
 
-                start = scope.uiOptions.start;
-                drag = scope.uiOptions.drag;
-                stop = scope.uiOptions.stop;
+                start = scope.uiOptions.onStart;
+                drag = scope.uiOptions.onDrag;
+                stop = scope.uiOptions.onStop;
                 component = new UIComponent(scope.uiOptions.node, handle[0]);
 
               }
@@ -53,10 +55,18 @@
 
               var mousedown = function(e) {
                 e.preventDefault();
+
                 startX = e.clientX - elem[0].offsetLeft;
                 startY = e.clientY - elem[0].offsetTop;
-                elem.on('mousemove', mousemove);
-                elem.on('mouseup', mouseup);
+
+                if('ontouchstart' in document.documentElement) {
+                  elem[0].addEventListener('touchmove', mousemove);
+                  elem[0].addEventListener('touchend', mouseup);
+                } else {
+                  elem.on('mousemove', mousemove);
+                  elem.on('mouseup', mouseup);
+                }
+
                 if (start) {
                   start(e);
                 }
@@ -65,18 +75,41 @@
 
               // Handle drag event
               var mousemove = function(e) {
+                elem[0].parentNode.style.cursor = 'url("/assets/ui/slider-control-icon-transparent-cursor.png") 0 0, pointer';
+                elem[0].parentNode.style.border = '1px solid rgba(255,255,255,0.3)';
+
                 if(e.target === elem[0]){
-                  setPosition(e.offsetX, e.offsetY);
+                  if('ontouchstart' in document.documentElement) {
+                    e.preventDefault();
+                    if ( touchItem === undefined ) {
+                      touchItem = e.touches.length - 1; // make this touch = the latest touch in the touches list instead of using event
+                    }
+                    touchTransform = elem[0].parentNode.parentNode.parentNode.style.transform.split(',');
+                    setPosition(e.touches[touchItem].pageX - parseInt(touchTransform[12].trim()),
+                                e.touches[touchItem].pageY - parseInt(touchTransform[13].trim()));
+                  } else {
+                    setPosition(e.offsetX, e.offsetY);
+                  }
                   if (drag) {
                     drag(e);
                   }
                 }
               };
 
+
               // Unbind drag events
               var mouseup = function(e) {
-                elem.unbind('mousemove', mousemove);
-                elem.unbind('mouseup', mouseup);
+
+                elem[0].parentNode.style.cursor = 'url("/assets/ui/slider-control-icon-transparent-cursor.png") 22 22, pointer';
+                elem[0].parentNode.style.border = '1px solid rgba(255,255,255,0.2)';
+
+                if('ontouchstart' in document.documentElement) {
+                  touchItem = undefined;
+                } else {
+                  elem.unbind('mousemove', mousemove);
+                  elem.unbind('mouseup', mouseup);
+                }
+
                 if (stop) {
                   stop(e);
                 }
@@ -177,7 +210,15 @@
 
               };
 
-              handle.on('mousedown', mousedown);
+
+              if('ontouchstart' in document.documentElement) {
+                // handle.on('touchstart', mousedown);
+                elem[0].addEventListener('touchmove', mousemove);
+                elem[0].addEventListener('touchend', mouseup);
+              } else {
+                handle.on('mousedown', mousedown);
+              }
+
               //TODO: Handle Touch Events
 
               if (scope.uiOptions.orient === 'is--joystick') {

@@ -383,6 +383,8 @@ if(!Object.observe){
           this.elem.style.left = '0px';
           this.elem.parentNode.style.position = 'absolute';
 
+          this.node._translate = [];
+
           Object.observe(this.node, function(changes){
               this.transform(this.node);
           }.bind(this));
@@ -538,28 +540,26 @@ if(!Object.observe){
 
         if(node.translate && node.align) {
 
-          node.align[0] = (this.elem.parentNode.clientWidth * node.align[0])-(node.size[0] * node.origin[0])+node.translate[0];
-          node.align[1] = (this.elem.parentNode.clientHeight * node.align[1])-(node.size[1] * node.origin[1])+node.translate[1];
-          node.align[2] = (node.align[2] + node.translate[2] === 0 ? 1 : node.translate[2]);
-          matrix = matrix.translate( node.align[0], node.align[1], node.align[2] );
+          node._translate[0] = (this.elem.parentNode.clientWidth * node.align[0])-(node.size[0] * node.origin[0])+node.translate[0];
+          node._translate[1] = (this.elem.parentNode.clientHeight * node.align[1])-(node.size[1] * node.origin[1])+node.translate[1];
+          node._translate[2] = (node.align[2] + node.translate[2] === 0 ? 1 : node.translate[2]);
 
         } else if(node.align) {
 
-
-          node.align[0] = (this.elem.parentNode.clientWidth * node.align[0])-(node.size[0] * node.origin[0]);
-          node.align[1] = (this.elem.parentNode.clientHeight * node.align[1])-(node.size[1] * node.origin[1]);
-          node.align[2] = (node.align[2] * 100);
-          matrix = matrix.translate(node.align[0], node.align[1], node.align[2] );
+          node._translate[0] = (this.elem.parentNode.clientWidth * node.align[0])-(node.size[0] * node.origin[0]);
+          node._translate[1] = (this.elem.parentNode.clientHeight * node.align[1])-(node.size[1] * node.origin[1]);
+          node._translate[2] = (node.align[2] * 100);
 
         } else if(node.translate) {
-
-          matrix = matrix.translate(node.translate[0], node.translate[1], node.translate[2] === 0 ? 1 : node.translate[2]);
+          node._translate[0] = node.translate[0];
+          node._translate[1] = node.translate[1];
+          node._translate[2] = node.translate[2] === 0 ? 1 : node.translate[2];
 
         } else {
-
-          matrix = matrix.translate(0, 0, 1);
-
+          node._translate = [0,0,1];  
         }
+
+        matrix = matrix.translate(node._translate[0], node._translate[1], node._translate[2]);
 
         if(node.scale) {
 

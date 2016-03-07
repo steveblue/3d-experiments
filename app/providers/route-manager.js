@@ -93,6 +93,35 @@
                 $scope.model = MirrorModel;
                 $scope.world = MirrorWorld;
 
+                $scope.containerNode = {
+                  node: {
+                    translate: [0,0,1],
+                    size: [window.innerWidth, 240, 1.0],
+                    opacity: 1.0,
+                    log: true
+                  }
+                };
+
+
+                $scope.buttonNode = {
+                  state: 'is--default',
+                  size: 'is-small',
+                  node: {
+                    origin: [0.0, 0.0, 0.0],
+                    align: [0.5,0.0,0.0],
+                    translate: [-120,20,1],
+                    size: [50, 36, 1.0],
+                    opacity: 1.0,
+                    log: true
+                  },
+                  onTap: function(e) {
+
+                  },
+                  onPress: function(e) {
+                    // console.log('DRAG');
+                  }
+                };
+
                 $scope.sliderVertNode = {
                   currentValue : 0.0,
                   min: 0.0,
@@ -107,23 +136,53 @@
                   container: {
                     origin: [0.0, 1.0, 0.0],
                     align: [0.5,1.0,0.0],
+                    translate: [-44,-20,1],
+                    size: [200, 200, 1.0],
+                    opacity: 1.0,
+                    log: true
+                  },
+                  onStart: function(e) {
+                    console.log(e);
+                  },
+                  onDrag: function(e) {
+                    console.log(e);
+                  },
+                  onStop: function(e) {
+                    console.log(e);
+                  }
+                };
+
+                $scope.sliderHorNode = {
+                  currentValue : 0.0,
+                  min: 0.0,
+                  max: 255.0,
+                  orient: 'is--vert',
+                  node: {
+                    origin: [0.5, 0.5, 0.0],
+                    translate: [0.0, 0.0, 0.0],
+                    size: [44, 44, 1.0],
+                    opacity: 0.3
+                  },
+                  container: {
+                    origin: [0.0, 1.0, 0.0],
+                    align: [0.5,1.0,0.0],
                     translate: [0,-20,1],
                     size: [200, 200, 1.0],
                     opacity: 1.0,
                     log: true
                   },
-                  start: function(e) {
-                    // console.log('START');
+                  onStart: function(e) {
+                    console.log(e);
                   },
-                  drag: function(e) {
-                    // console.log('DRAG');
+                  onDrag: function(e) {
+                    console.log(e);
                   },
-                  stop: function(e) {
-                    // console.log('STOP');
+                  onStop: function(e) {
+                    console.log(e);
                   }
                 };
 
-                $scope.sliderHorNode = {
+                $scope.sliderAnotherNode = {
                   currentValue : 0.0,
                   min: 0.0,
                   max: 255.0,
@@ -142,14 +201,14 @@
                     opacity: 1.0,
                     log: true
                   },
-                  start: function(e) {
-                    // console.log('START');
+                  onStart: function(e) {
+                    console.log(e);
                   },
-                  drag: function(e) {
-                    // console.log('DRAG');
+                  onDrag: function(e) {
+                    console.log(e);
                   },
-                  stop: function(e) {
-                    // console.log('STOP');
+                  onStop: function(e) {
+                    console.log(e);
                   }
                 };
 
@@ -172,14 +231,14 @@
                     opacity: 1.0,
                     log: true
                   },
-                  start: function(e) {
-                    // console.log('START');
+                  onStart: function(e) {
+                    console.log(e);
                   },
-                  drag: function(e) {
-                    // console.log('DRAG');
+                  onDrag: function(e) {
+                    console.log(e);
                   },
-                  stop: function(e) {
-                    // console.log('STOP');
+                  onStop: function(e) {
+                    console.log(e);
                   }
                 };
 
@@ -202,18 +261,18 @@
                     opacity: 1.0,
                     log: true
                   },
-                  start: function(e) {
-                    // console.log('START');
+                  onStart: function(e) {
+                    console.log(e);
                   },
-                  drag: function(e) {
-                    // console.log('DRAG');
+                  onDrag: function(e) {
+                    console.log(e);
                   },
-                  stop: function(e) {
-                    // console.log('STOP');
+                  onStop: function(e) {
+                    console.log(e);
                   }
                 };
 
-    
+
 
               }
             })
