@@ -103,7 +103,7 @@
                 };
 
 
-                $scope.buttonNode = {
+                $scope.buttons = [{
                   state: 'is--default',
                   size: 'is-small',
                   node: {
@@ -120,9 +120,8 @@
                   onPress: function(e) {
                     // console.log('DRAG');
                   }
-                };
-
-                $scope.toggleNode = {
+                },
+                {
                   state: 'is--default',
                   size: 'is--small',
                   type: 'is--toggle',
@@ -140,9 +139,9 @@
                   onPress: function(e) {
                     // console.log('DRAG');
                   }
-                };
+                }];
 
-                $scope.sliderVertNode = {
+                $scope.sliders = [{
                   currentValue : 0.0,
                   min: 0.0,
                   max: 50.0,
@@ -170,9 +169,8 @@
                   onStop: function(e, data, timestamp) {
                     console.log(e, data, timestamp);
                   }
-                };
-
-                $scope.sliderHorNode = {
+                },
+                {
                   currentValue : 0.0,
                   min: 0.0,
                   max: 255.0,
@@ -200,9 +198,8 @@
                   onStop: function(e, data, timestamp) {
                     console.log(e, data, timestamp);
                   }
-                };
-
-                $scope.sliderAnotherNode = {
+                },
+                {
                   currentValue : 0.0,
                   min: 0.0,
                   max: 255.0,
@@ -230,9 +227,8 @@
                   onStop: function(e, data, timestamp) {
                     console.log(e, data, timestamp);
                   }
-                };
-
-                $scope.sliderLeftJoystickNode = {
+                },
+                {
                   currentValue : [0.0, 0.0],
                   min: [0.0, 0.0],
                   max: [100.0, 100.0],
@@ -260,9 +256,8 @@
                   onStop: function(e, data, timestamp) {
                     console.log(e, data, timestamp);
                   }
-                };
-
-                $scope.sliderRightJoystickNode = {
+                },
+                {
                   currentValue : [0.0, 0.0],
                   min: [0.0, 0.0],
                   max: [100.0, 100.0],
@@ -290,7 +285,7 @@
                   onStop: function(e, data, timestamp) {
                     console.log(e, data, timestamp);
                   }
-                };
+                }];
 
 
 

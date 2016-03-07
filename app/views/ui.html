@@ -1,12 +1,9 @@
 
 <div class="ui--control-container" ui-container ng-model="containerNode">
-  <div ui-button ng-model="buttonNode"></div>
-  <div ui-button ng-model="toggleNode"></div>
-  <div ui-slider ng-model="sliderVertNode"></div>
-  <div ui-slider ng-model="sliderHorNode"></div>
-  <div ui-slider ng-model="sliderAnotherNode"></div>
-  <div ui-slider ng-model="sliderLeftJoystickNode"></div>
-  <div ui-slider ng-model="sliderRightJoystickNode"></div>
+
+  <div ui-button ng-repeat="buttonModel in buttons" ng-model="buttonModel"></div>
+  <div ui-slider ng-repeat="sliderModel in sliders" ng-model="sliderModel"></div>
+  
 </div>
 
 <div class="scene-container" >
