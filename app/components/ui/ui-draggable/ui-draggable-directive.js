@@ -51,7 +51,9 @@
 
               }
 
-
+              elem[0].parentNode.parentNode.parentNode.parentNode.addEventListener('touchstart', function(ev){
+                ev.preventDefault();
+              });
               // Bind mousedown event
 
               var mousedown = function(e) {
@@ -106,14 +108,14 @@
                   setPosition(newX, newY);
 
                   if( scope.uiOptions.orient === 'is--hor' ) {
-                    scope.uiOptions.currentValue = scale(newX, 0, elem[0].clientWidth, scope.uiOptions.min, scope.uiOptions.max);
+                    scope.uiOptions.currentValue = scale(newX, 0, elem[0].clientWidth - 44, scope.uiOptions.min, scope.uiOptions.max);
                   }
                   if( scope.uiOptions.orient === 'is--vert' ) {
-                    scope.uiOptions.currentValue = scale(newY, 0, elem[0].clientHeight, scope.uiOptions.min, scope.uiOptions.max);
+                    scope.uiOptions.currentValue = scale(newY, 0, elem[0].clientHeight - 44, scope.uiOptions.min, scope.uiOptions.max);
                   }
                   if( scope.uiOptions.orient === 'is--joystick' ) {
-                    scope.uiOptions.currentValue = [scale(newX, 0, elem[0].clientWidth, scope.uiOptions.min[0], scope.uiOptions.max[0]),
-                                              scale(newY, 0, elem[0].clientHeight, scope.uiOptions.min[1], scope.uiOptions.max[1])];
+                    scope.uiOptions.currentValue = [scale(newX, 0, elem[0].clientWidth - 44, scope.uiOptions.min[0], scope.uiOptions.max[0]),
+                                              scale(newY, 0, elem[0].clientHeight - 44, scope.uiOptions.min[1], scope.uiOptions.max[1])];
                   }
                   if (drag) {
                     drag(e,scope.uiOptions.currentValue);
