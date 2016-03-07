@@ -33,20 +33,40 @@
 
                   var button = angular.element(elem[0].children[0]);
 
-                  button.on('click', function(ev) {
+                  var onTap = function(e) {
 
-                    if( button.hasClass('is--active') ) {
-                       button.removeClass('is--active');
-                       //scope.uiOptions.node.state = 'is--inactive';
+                    if( button.hasClass('is--toggle') ) {
+
+                      if( button.hasClass('is--active') ) {
+                         button.removeClass('is--active');
+                         scope.uiOptions.currentValue = false;
+                         //scope.uiOptions.node.state = 'is--inactive';
+                      } else {
+                        button.addClass('is--active');
+                        scope.uiOptions.currentValue = true;
+                        //scope.uiOptions.node.state = 'is--active';
+                      }
+
+                      scope.uiOptions.onTap(e, scope.uiOptions.currentValue);
+
                     } else {
+
                       button.addClass('is--active');
-                      //scope.uiOptions.node.state = 'is--active';
+                      scope.uiOptions.currentValue = true;
+                      scope.uiOptions.onTap(e, scope.uiOptions.currentValue, e.timeStamp);
+                      setTimeout(function(){
+                        button.removeClass('is--active');
+                        scope.uiOptions.currentValue = false;
+                        scope.uiOptions.onTap(e, scope.uiOptions.currentValue, e.timeStamp + 300);
+                      },300);
+
                     }
 
-                    scope.uiOptions.onTap(ev);
 
-                  });
+                  };
 
+                  button.on('click', onTap);
+                  button[0].addEventListener('touchend', onTap);
 
 
                 }

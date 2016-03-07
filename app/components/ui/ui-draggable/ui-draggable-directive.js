@@ -70,6 +70,31 @@
                   elem.on('mouseup', mouseup);
                 }
 
+                if('ontouchstart' in document.documentElement) {
+                  e.preventDefault();
+                  if ( touchItem === undefined ) {
+                    touchItem = e.touches.length - 1; // make this touch = the latest touch in the touches list instead of using event
+                  }
+                  containerTransform = elem[0].parentNode.parentNode.parentNode.parentNode.style.transform.split(',');
+                  parentTransform = elem[0].parentNode.parentNode.parentNode.style.transform.split(',');
+                  newX = e.touches[touchItem].pageX -
+                          (parseInt(parentTransform[12].trim()) +
+                          parseInt(containerTransform[12].trim())) -
+                          (handle[0].clientWidth / 2);
+                  newY = e.touches[touchItem].pageY -
+                        (parseInt(parentTransform[13].trim()) +
+                        parseInt(containerTransform[13].trim())) -
+                        (handle[0].clientWidth / 2);
+                } else {
+
+                  newX = e.offsetX;
+                  newY = e.offsetY;
+
+                }
+
+                setPosition(newX, newY);
+
+
                 if (start) {
                   start(e);
                 }
@@ -118,7 +143,7 @@
                                               scale(newY, 0, elem[0].clientHeight - 44, scope.uiOptions.min[1], scope.uiOptions.max[1])];
                   }
                   if (drag) {
-                    drag(e,scope.uiOptions.currentValue);
+                    drag(e,scope.uiOptions.currentValue, e.timeStamp);
                   }
                 }
               };
@@ -250,7 +275,9 @@
                 elem[0].addEventListener('touchmove', mousemove);
                 elem[0].addEventListener('touchend', mouseup);
               } else {
-                handle.on('mousedown', mousedown);
+                // handle.on('mousedown', mousedown);
+                elem.on('mousedown', mousedown);
+                elem[0].addEventListener('touchstart', mousedown);
               }
 
               //TODO: Handle Touch Events

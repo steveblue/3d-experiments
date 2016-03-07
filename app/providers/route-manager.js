@@ -114,8 +114,28 @@
                     opacity: 1.0,
                     log: true
                   },
-                  onTap: function(e) {
+                  onTap: function(e, data, timestamp) {
+                    console.log(e,data, timestamp);
+                  },
+                  onPress: function(e) {
+                    // console.log('DRAG');
+                  }
+                };
 
+                $scope.toggleNode = {
+                  state: 'is--default',
+                  size: 'is--small',
+                  type: 'is--toggle',
+                  node: {
+                    origin: [0.0, 0.0, 0.0],
+                    align: [0.5,0.0,0.0],
+                    translate: [-120,60,1],
+                    size: [50, 36, 1.0],
+                    opacity: 1.0,
+                    log: true
+                  },
+                  onTap: function(e, data, timestamp) {
+                    console.log(e,data, timestamp);
                   },
                   onPress: function(e) {
                     // console.log('DRAG');
@@ -141,14 +161,14 @@
                     opacity: 1.0,
                     log: true
                   },
-                  onStart: function(e) {
-                    console.log(e);
+                  onStart: function(e, data, timestamp) {
+                    console.log(e, data, timestamp);
                   },
-                  onDrag: function(e, data) {
-                    console.log(e, data);
+                  onDrag: function(e, data, timestamp) {
+                    console.log(e, data, timestamp);
                   },
-                  onStop: function(e) {
-                    console.log(e);
+                  onStop: function(e, data, timestamp) {
+                    console.log(e, data, timestamp);
                   }
                 };
 
@@ -171,14 +191,14 @@
                     opacity: 1.0,
                     log: true
                   },
-                  onStart: function(e) {
-                    console.log(e);
+                  onStart: function(e, data, timestamp) {
+                    console.log(e, data, timestamp);
                   },
-                  onDrag: function(e, data) {
-                    console.log(e, data);
+                  onDrag: function(e, data, timestamp) {
+                    console.log(e, data, timestamp);
                   },
-                  onStop: function(e) {
-                    console.log(e);
+                  onStop: function(e, data, timestamp) {
+                    console.log(e, data, timestamp);
                   }
                 };
 
@@ -201,14 +221,14 @@
                     opacity: 1.0,
                     log: true
                   },
-                  onStart: function(e) {
-                    console.log(e);
+                  onStart: function(e, data, timestamp) {
+                    console.log(e, data, timestamp);
                   },
-                  onDrag: function(e, data) {
-                    console.log(e, data);
+                  onDrag: function(e, data, timestamp) {
+                    console.log(e, data, timestamp);
                   },
-                  onStop: function(e) {
-                    console.log(e);
+                  onStop: function(e, data, timestamp) {
+                    console.log(e, data, timestamp);
                   }
                 };
 
@@ -231,14 +251,14 @@
                     opacity: 1.0,
                     log: true
                   },
-                  onStart: function(e) {
-                    console.log(e);
+                  onStart: function(e, data, timestamp) {
+                    console.log(e, data, timestamp);
                   },
-                  onDrag: function(e, data) {
-                    console.log(e, data);
+                  onDrag: function(e, data, timestamp) {
+                    console.log(e, data, timestamp);
                   },
-                  onStop: function(e) {
-                    console.log(e);
+                  onStop: function(e, data, timestamp) {
+                    console.log(e, data, timestamp);
                   }
                 };
 
@@ -261,14 +281,14 @@
                     opacity: 1.0,
                     log: true
                   },
-                  onStart: function(e) {
-                    console.log(e);
+                  onStart: function(e, data, timestamp) {
+                    console.log(e, data, timestamp);
                   },
-                  onDrag: function(e, data) {
-                    console.log(e, data);
+                  onDrag: function(e, data, timestamp) {
+                    console.log(e, data, timestamp);
                   },
-                  onStop: function(e) {
-                    console.log(e);
+                  onStop: function(e, data, timestamp) {
+                    console.log(e, data, timestamp);
                   }
                 };
 
