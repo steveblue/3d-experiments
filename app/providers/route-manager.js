@@ -95,7 +95,7 @@
 
                 $scope.containerNode = {
                   node: {
-                    translate: [0,0,1],
+                    translate: [0,window.innerHeight - 240,1],
                     size: [window.innerWidth, 240, 1.0],
                     opacity: 1.0,
                     log: true

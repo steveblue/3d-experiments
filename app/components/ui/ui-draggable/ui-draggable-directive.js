@@ -35,7 +35,8 @@
                 stop,
                 drag,
                 component,
-                touchTransform,
+                parentTransform,
+                containerTransform,
                 touchItem,
                 handle = elem.find('div');
 
@@ -84,9 +85,11 @@
                     if ( touchItem === undefined ) {
                       touchItem = e.touches.length - 1; // make this touch = the latest touch in the touches list instead of using event
                     }
-                    touchTransform = elem[0].parentNode.parentNode.parentNode.style.transform.split(',');
-                    setPosition(e.touches[touchItem].pageX - parseInt(touchTransform[12].trim()),
-                                e.touches[touchItem].pageY - parseInt(touchTransform[13].trim()));
+                    containerTransform = elem[0].parentNode.parentNode.parentNode.parentNode.style.transform.split(',');
+                    parentTransform = elem[0].parentNode.parentNode.parentNode.style.transform.split(',');
+  
+                    setPosition(e.touches[touchItem].pageX - (parseInt(parentTransform[12].trim()) + parseInt(containerTransform[12].trim())) - (handle[0].clientWidth / 2),
+                                e.touches[touchItem].pageY - (parseInt(parentTransform[13].trim()) + parseInt(containerTransform[13].trim())) - (handle[0].clientWidth / 2) );
                   } else {
                     setPosition(e.offsetX, e.offsetY);
                   }
