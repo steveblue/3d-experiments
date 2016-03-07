@@ -76,7 +76,9 @@
 
               // Handle drag event
               var mousemove = function(e) {
-                elem[0].parentNode.style.cursor = 'url("/assets/ui/slider-control-icon-transparent-cursor.png") 0 0, pointer';
+                if( scope.uiOptions.orient === 'is--joystick' ) {
+                  elem[0].parentNode.style.cursor = 'url("/assets/ui/slider-control-icon-transparent-cursor.png") 0 0, pointer';
+                }
                 elem[0].parentNode.style.border = '1px solid rgba(255,255,255,0.3)';
 
                 if(e.target === elem[0]){
@@ -87,14 +89,34 @@
                     }
                     containerTransform = elem[0].parentNode.parentNode.parentNode.parentNode.style.transform.split(',');
                     parentTransform = elem[0].parentNode.parentNode.parentNode.style.transform.split(',');
-  
-                    setPosition(e.touches[touchItem].pageX - (parseInt(parentTransform[12].trim()) + parseInt(containerTransform[12].trim())) - (handle[0].clientWidth / 2),
-                                e.touches[touchItem].pageY - (parseInt(parentTransform[13].trim()) + parseInt(containerTransform[13].trim())) - (handle[0].clientWidth / 2) );
+                    newX = e.touches[touchItem].pageX -
+                            (parseInt(parentTransform[12].trim()) +
+                            parseInt(containerTransform[12].trim())) -
+                            (handle[0].clientWidth / 2);
+                    newY = e.touches[touchItem].pageY -
+                          (parseInt(parentTransform[13].trim()) +
+                          parseInt(containerTransform[13].trim())) -
+                          (handle[0].clientWidth / 2);
                   } else {
-                    setPosition(e.offsetX, e.offsetY);
+
+                    newX = e.offsetX;
+                    newY = e.offsetY;
+
+                  }
+                  setPosition(newX, newY);
+
+                  if( scope.uiOptions.orient === 'is--hor' ) {
+                    scope.uiOptions.currentValue = scale(newX, 0, elem[0].clientWidth, scope.uiOptions.min, scope.uiOptions.max);
+                  }
+                  if( scope.uiOptions.orient === 'is--vert' ) {
+                    scope.uiOptions.currentValue = scale(newY, 0, elem[0].clientHeight, scope.uiOptions.min, scope.uiOptions.max);
+                  }
+                  if( scope.uiOptions.orient === 'is--joystick' ) {
+                    scope.uiOptions.currentValue = [scale(newX, 0, elem[0].clientWidth, scope.uiOptions.min[0], scope.uiOptions.max[0]),
+                                              scale(newY, 0, elem[0].clientHeight, scope.uiOptions.min[1], scope.uiOptions.max[1])];
                   }
                   if (drag) {
-                    drag(e);
+                    drag(e,scope.uiOptions.currentValue);
                   }
                 }
               };
@@ -136,6 +158,13 @@
                 return Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
               };
 
+              // convert between two ranges, for outputting user value
+
+              var scale = function(v, min, max, gmin, gmax) {
+
+                return ((v - min) / (max - min)) * (gmax - gmin) + gmin;
+
+              };
 
               // Find if cursor is within radius of elem
               var circularBounds = function(x, y, xRange, yRange) {

@@ -125,7 +125,7 @@
                 $scope.sliderVertNode = {
                   currentValue : 0.0,
                   min: 0.0,
-                  max: 255.0,
+                  max: 50.0,
                   orient: 'is--vert',
                   node: {
                     origin: [0.0, 0.0, 0.0],
@@ -144,8 +144,8 @@
                   onStart: function(e) {
                     console.log(e);
                   },
-                  onDrag: function(e) {
-                    console.log(e);
+                  onDrag: function(e, data) {
+                    console.log(e, data);
                   },
                   onStop: function(e) {
                     console.log(e);
@@ -174,8 +174,8 @@
                   onStart: function(e) {
                     console.log(e);
                   },
-                  onDrag: function(e) {
-                    console.log(e);
+                  onDrag: function(e, data) {
+                    console.log(e, data);
                   },
                   onStop: function(e) {
                     console.log(e);
@@ -204,8 +204,8 @@
                   onStart: function(e) {
                     console.log(e);
                   },
-                  onDrag: function(e) {
-                    console.log(e);
+                  onDrag: function(e, data) {
+                    console.log(e, data);
                   },
                   onStop: function(e) {
                     console.log(e);
@@ -234,8 +234,8 @@
                   onStart: function(e) {
                     console.log(e);
                   },
-                  onDrag: function(e) {
-                    console.log(e);
+                  onDrag: function(e, data) {
+                    console.log(e, data);
                   },
                   onStop: function(e) {
                     console.log(e);
@@ -264,8 +264,8 @@
                   onStart: function(e) {
                     console.log(e);
                   },
-                  onDrag: function(e) {
-                    console.log(e);
+                  onDrag: function(e, data) {
+                    console.log(e, data);
                   },
                   onStop: function(e) {
                     console.log(e);
