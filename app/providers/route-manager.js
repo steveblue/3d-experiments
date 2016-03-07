@@ -139,6 +139,63 @@
                   onPress: function(e) {
                     // console.log('DRAG');
                   }
+                },
+                {
+                  state: 'is--default',
+                  size: 'is--small',
+                  type: 'is--toggle',
+                  node: {
+                    origin: [0.0, 0.0, 0.0],
+                    align: [0.5,0.0,0.0],
+                    translate: [-120,100,1],
+                    size: [50, 36, 1.0],
+                    opacity: 1.0,
+                    log: true
+                  },
+                  onTap: function(e, data, timestamp) {
+                    console.log(e,data, timestamp);
+                  },
+                  onPress: function(e) {
+                    // console.log('DRAG');
+                  }
+                },
+                {
+                  state: 'is--default',
+                  size: 'is--small',
+                  type: 'is--toggle',
+                  node: {
+                    origin: [0.0, 0.0, 0.0],
+                    align: [0.5,0.0,0.0],
+                    translate: [-120,140,1],
+                    size: [50, 36, 1.0],
+                    opacity: 1.0,
+                    log: true
+                  },
+                  onTap: function(e, data, timestamp) {
+                    console.log(e,data, timestamp);
+                  },
+                  onPress: function(e) {
+                    // console.log('DRAG');
+                  }
+                },
+                {
+                  state: 'is--default',
+                  size: 'is--small',
+                  type: 'is--default',
+                  node: {
+                    origin: [0.0, 0.0, 0.0],
+                    align: [0.5,0.0,0.0],
+                    translate: [-120,180,1],
+                    size: [50, 36, 1.0],
+                    opacity: 1.0,
+                    log: true
+                  },
+                  onTap: function(e, data, timestamp) {
+                    console.log(e,data, timestamp);
+                  },
+                  onPress: function(e) {
+                    // console.log('DRAG');
+                  }
                 }];
 
                 $scope.sliders = [{
