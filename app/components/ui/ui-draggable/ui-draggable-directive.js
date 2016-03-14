@@ -11,7 +11,7 @@
       UIComponent
     ) {
 
-      var UIDraggableDirective = function($document) {
+      var UIDraggableDirective = function() {
         // Returns Directive Creation Object
         return {
           restrict: 'A',
@@ -96,56 +96,85 @@
 
 
                 if (start) {
-                  start(e);
+                  start(e, scope.uiOptions.currentValue, e.timeStamp);
                 }
 
               };
 
               // Handle drag event
+
+              // Handle drag event
+              var touchmove = function(e) {
+
+                  e.preventDefault();
+
+                  if( scope.uiOptions.orient === 'is--joystick' ) {
+                    elem[0].parentNode.style.cursor = 'url("/assets/ui/slider-control-icon-transparent-cursor.png") 0 0, pointer';
+                  }
+
+                  elem[0].parentNode.style.border = '1px solid rgba(255,255,255,0.3)';
+
+                  if ( touchItem === undefined ) {
+                    touchItem = e.touches.length - 1; // make this touch = the latest touch in the touches list instead of using event
+                  }
+
+                  containerTransform = elem[0].parentNode.parentNode.parentNode.parentNode.style.transform.split(',');
+                  parentTransform = elem[0].parentNode.parentNode.parentNode.style.transform.split(',');
+                  newX = e.touches[touchItem].pageX -
+                          (parseInt(parentTransform[12].trim()) +
+                          parseInt(containerTransform[12].trim())) -
+                          (handle[0].clientWidth / 2);
+                  newY = e.touches[touchItem].pageY -
+                        (parseInt(parentTransform[13].trim()) +
+                        parseInt(containerTransform[13].trim())) -
+                        (handle[0].clientWidth / 2);
+
+                setPosition(newX, newY);
+
+                if( scope.uiOptions.orient === 'is--hor' ) {
+                  scope.uiOptions.currentValue = scale(newX, 0, elem[0].clientWidth - 44, scope.uiOptions.min, scope.uiOptions.max);
+                }
+                else if( scope.uiOptions.orient === 'is--vert' ) {
+                  scope.uiOptions.currentValue = scale(newY, 0, elem[0].clientHeight - 44, scope.uiOptions.min, scope.uiOptions.max);
+                }
+                else if( scope.uiOptions.orient === 'is--joystick' ) {
+                  scope.uiOptions.currentValue = [scale(newX, 0, elem[0].clientWidth - 44, scope.uiOptions.min[0], scope.uiOptions.max[0]),
+                                            scale(newY, 0, elem[0].clientHeight - 44, scope.uiOptions.min[1], scope.uiOptions.max[1])];
+                }
+
+                if (drag) {
+                  drag(e, scope.uiOptions.currentValue, e.timeStamp);
+                }
+
+              };
+
               var mousemove = function(e) {
+
                 if( scope.uiOptions.orient === 'is--joystick' ) {
                   elem[0].parentNode.style.cursor = 'url("/assets/ui/slider-control-icon-transparent-cursor.png") 0 0, pointer';
                 }
+
                 elem[0].parentNode.style.border = '1px solid rgba(255,255,255,0.3)';
 
-                if(e.target === elem[0]){
-                  if('ontouchstart' in document.documentElement) {
-                    e.preventDefault();
-                    if ( touchItem === undefined ) {
-                      touchItem = e.touches.length - 1; // make this touch = the latest touch in the touches list instead of using event
-                    }
-                    containerTransform = elem[0].parentNode.parentNode.parentNode.parentNode.style.transform.split(',');
-                    parentTransform = elem[0].parentNode.parentNode.parentNode.style.transform.split(',');
-                    newX = e.touches[touchItem].pageX -
-                            (parseInt(parentTransform[12].trim()) +
-                            parseInt(containerTransform[12].trim())) -
-                            (handle[0].clientWidth / 2);
-                    newY = e.touches[touchItem].pageY -
-                          (parseInt(parentTransform[13].trim()) +
-                          parseInt(containerTransform[13].trim())) -
-                          (handle[0].clientWidth / 2);
-                  } else {
+                newX = e.offsetX;
+                newY = e.offsetY;
+                setPosition(newX, newY);
 
-                    newX = e.offsetX;
-                    newY = e.offsetY;
-
-                  }
-                  setPosition(newX, newY);
-
-                  if( scope.uiOptions.orient === 'is--hor' ) {
-                    scope.uiOptions.currentValue = scale(newX, 0, elem[0].clientWidth - 44, scope.uiOptions.min, scope.uiOptions.max);
-                  }
-                  if( scope.uiOptions.orient === 'is--vert' ) {
-                    scope.uiOptions.currentValue = scale(newY, 0, elem[0].clientHeight - 44, scope.uiOptions.min, scope.uiOptions.max);
-                  }
-                  if( scope.uiOptions.orient === 'is--joystick' ) {
-                    scope.uiOptions.currentValue = [scale(newX, 0, elem[0].clientWidth - 44, scope.uiOptions.min[0], scope.uiOptions.max[0]),
-                                              scale(newY, 0, elem[0].clientHeight - 44, scope.uiOptions.min[1], scope.uiOptions.max[1])];
-                  }
-                  if (drag) {
-                    drag(e,scope.uiOptions.currentValue, e.timeStamp);
-                  }
+                if( scope.uiOptions.orient === 'is--hor' ) {
+                  scope.uiOptions.currentValue = scale(newX, 0, elem[0].clientWidth - 44, scope.uiOptions.min, scope.uiOptions.max);
                 }
+                else if( scope.uiOptions.orient === 'is--vert' ) {
+                  scope.uiOptions.currentValue = scale(newY, 0, elem[0].clientHeight - 44, scope.uiOptions.min, scope.uiOptions.max);
+                }
+                else if( scope.uiOptions.orient === 'is--joystick' ) {
+                  scope.uiOptions.currentValue = [scale(newX, 0, elem[0].clientWidth - 44, scope.uiOptions.min[0], scope.uiOptions.max[0]),
+                                            scale(newY, 0, elem[0].clientHeight - 44, scope.uiOptions.min[1], scope.uiOptions.max[1])];
+                }
+
+                if (drag) {
+                  drag(e, scope.uiOptions.currentValue, e.timeStamp);
+                }
+
               };
 
 
@@ -163,7 +192,7 @@
                 }
 
                 if (stop) {
-                  stop(e);
+                  stop(e, scope.uiOptions.currentValue, e.timeStamp);
                 }
               };
 
@@ -272,12 +301,13 @@
 
               if('ontouchstart' in document.documentElement) {
                 // handle.on('touchstart', mousedown);
-                elem[0].addEventListener('touchmove', mousemove);
+                elem[0].addEventListener('touchstart', mousedown);
+                elem[0].addEventListener('touchmove', touchmove);
                 elem[0].addEventListener('touchend', mouseup);
               } else {
-                // handle.on('mousedown', mousedown);
+                handle.on('mousedown', mousedown);
                 elem.on('mousedown', mousedown);
-                elem[0].addEventListener('touchstart', mousedown);
+
               }
 
               //TODO: Handle Touch Events
@@ -293,7 +323,7 @@
 
 
       // If Using Angular Dep Injection
-      return ['$document', UIDraggableDirective];
+      return [UIDraggableDirective];
 
     } // end require function
   ); // end define call
