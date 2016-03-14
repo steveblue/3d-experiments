@@ -107,6 +107,7 @@
               var touchmove = function(e) {
 
                   e.preventDefault();
+                  e.stopPropagation();
 
                   if( scope.uiOptions.orient === 'is--joystick' ) {
                     elem[0].parentNode.style.cursor = 'url("/assets/ui/slider-control-icon-transparent-cursor.png") 0 0, pointer';
