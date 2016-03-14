@@ -120,6 +120,7 @@
 
                   containerTransform = elem[0].parentNode.parentNode.parentNode.parentNode.style.transform.split(',');
                   parentTransform = elem[0].parentNode.parentNode.parentNode.style.transform.split(',');
+
                   newX = e.touches[touchItem].pageX -
                           (parseInt(parentTransform[12].trim()) +
                           parseInt(containerTransform[12].trim())) -
@@ -301,7 +302,7 @@
 
               if('ontouchstart' in document.documentElement) {
                 // handle.on('touchstart', mousedown);
-                elem[0].addEventListener('touchstart', mousedown);
+                //elem[0].addEventListener('touchstart', mousedown);
                 elem[0].addEventListener('touchmove', touchmove);
                 elem[0].addEventListener('touchend', mouseup);
               } else {

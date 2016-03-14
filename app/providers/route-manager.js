@@ -90,8 +90,8 @@
               templateUrl: 'views/ui.html',
               controller  : function($scope){
 
-                $scope.model = MirrorModel;
-                $scope.world = MirrorWorld;
+                $scope.model = TerrainModel;
+                $scope.world = SunsetWorld;
 
                 $scope.containerNode = {
                   node: {
@@ -103,188 +103,189 @@
                 };
 
 
-                $scope.buttons = [{
-                  state: 'is--default',
-                  size: 'is-small',
-                  node: {
-                    origin: [0.0, 0.0, 0.0],
-                    align: [0.5,0.0,0.0],
-                    translate: [-120,20,1],
-                    size: [50, 36, 1.0],
-                    opacity: 1.0,
-                    log: true
-                  },
-                  onTap: function(e, data, timestamp) {
-                    console.log(e,data, timestamp);
-                  },
-                  onPress: function(e) {
-                    // console.log('DRAG');
-                  }
-                },
-                {
-                  state: 'is--default',
-                  size: 'is--small',
-                  type: 'is--toggle',
-                  node: {
-                    origin: [0.0, 0.0, 0.0],
-                    align: [0.5,0.0,0.0],
-                    translate: [-120,60,1],
-                    size: [50, 36, 1.0],
-                    opacity: 1.0,
-                    log: true
-                  },
-                  onTap: function(e, data, timestamp) {
-                    console.log(e,data, timestamp);
-                  },
-                  onPress: function(e) {
-                    // console.log('DRAG');
-                  }
-                },
-                {
-                  state: 'is--default',
-                  size: 'is--small',
-                  type: 'is--toggle',
-                  node: {
-                    origin: [0.0, 0.0, 0.0],
-                    align: [0.5,0.0,0.0],
-                    translate: [-120,100,1],
-                    size: [50, 36, 1.0],
-                    opacity: 1.0,
-                    log: true
-                  },
-                  onTap: function(e, data, timestamp) {
-                    console.log(e,data, timestamp);
-                  },
-                  onPress: function(e) {
-                    // console.log('DRAG');
-                  }
-                },
-                {
-                  state: 'is--default',
-                  size: 'is--small',
-                  type: 'is--toggle',
-                  node: {
-                    origin: [0.0, 0.0, 0.0],
-                    align: [0.5,0.0,0.0],
-                    translate: [-120,140,1],
-                    size: [50, 36, 1.0],
-                    opacity: 1.0,
-                    log: true
-                  },
-                  onTap: function(e, data, timestamp) {
-                    console.log(e,data, timestamp);
-                  },
-                  onPress: function(e) {
-                    // console.log('DRAG');
-                  }
-                },
-                {
-                  state: 'is--default',
-                  size: 'is--small',
-                  type: 'is--default',
-                  node: {
-                    origin: [0.0, 0.0, 0.0],
-                    align: [0.5,0.0,0.0],
-                    translate: [-120,180,1],
-                    size: [50, 36, 1.0],
-                    opacity: 1.0,
-                    log: true
-                  },
-                  onTap: function(e, data, timestamp) {
-                    console.log(e,data, timestamp);
-                  },
-                  onPress: function(e) {
-                    // console.log('DRAG');
-                  }
-                }];
+                // $scope.buttons = [{
+                //   state: 'is--default',
+                //   size: 'is-small',
+                //   node: {
+                //     origin: [0.0, 0.0, 0.0],
+                //     align: [0.5,0.0,0.0],
+                //     translate: [-120,20,1],
+                //     size: [50, 36, 1.0],
+                //     opacity: 1.0,
+                //     log: true
+                //   },
+                //   onTap: function(e, data, timestamp) {
+                //     console.log(e,data, timestamp);
+                //   },
+                //   onPress: function(e) {
+                //     // console.log('DRAG');
+                //   }
+                // },
+                // {
+                //   state: 'is--default',
+                //   size: 'is--small',
+                //   type: 'is--toggle',
+                //   node: {
+                //     origin: [0.0, 0.0, 0.0],
+                //     align: [0.5,0.0,0.0],
+                //     translate: [-120,60,1],
+                //     size: [50, 36, 1.0],
+                //     opacity: 1.0,
+                //     log: true
+                //   },
+                //   onTap: function(e, data, timestamp) {
+                //     console.log(e,data, timestamp);
+                //   },
+                //   onPress: function(e) {
+                //     // console.log('DRAG');
+                //   }
+                // },
+                // {
+                //   state: 'is--default',
+                //   size: 'is--small',
+                //   type: 'is--toggle',
+                //   node: {
+                //     origin: [0.0, 0.0, 0.0],
+                //     align: [0.5,0.0,0.0],
+                //     translate: [-120,100,1],
+                //     size: [50, 36, 1.0],
+                //     opacity: 1.0,
+                //     log: true
+                //   },
+                //   onTap: function(e, data, timestamp) {
+                //     console.log(e,data, timestamp);
+                //   },
+                //   onPress: function(e) {
+                //     // console.log('DRAG');
+                //   }
+                // },
+                // {
+                //   state: 'is--default',
+                //   size: 'is--small',
+                //   type: 'is--toggle',
+                //   node: {
+                //     origin: [0.0, 0.0, 0.0],
+                //     align: [0.5,0.0,0.0],
+                //     translate: [-120,140,1],
+                //     size: [50, 36, 1.0],
+                //     opacity: 1.0,
+                //     log: true
+                //   },
+                //   onTap: function(e, data, timestamp) {
+                //     console.log(e,data, timestamp);
+                //   },
+                //   onPress: function(e) {
+                //     // console.log('DRAG');
+                //   }
+                // },
+                // {
+                //   state: 'is--default',
+                //   size: 'is--small',
+                //   type: 'is--default',
+                //   node: {
+                //     origin: [0.0, 0.0, 0.0],
+                //     align: [0.5,0.0,0.0],
+                //     translate: [-120,180,1],
+                //     size: [50, 36, 1.0],
+                //     opacity: 1.0,
+                //     log: true
+                //   },
+                //   onTap: function(e, data, timestamp) {
+                //     console.log(e,data, timestamp);
+                //   },
+                //   onPress: function(e) {
+                //     // console.log('DRAG');
+                //   }
+                // }];
 
-                $scope.sliders = [{
-                  currentValue : 0.0,
-                  min: 0.0,
-                  max: 50.0,
-                  orient: 'is--vert',
-                  node: {
-                    origin: [0.0, 0.0, 0.0],
-                    translate: [0.0, 0.0, 0.0],
-                    size: [44, 44, 1.0],
-                    opacity: 0.3
-                  },
-                  container: {
-                    origin: [0.0, 1.0, 0.0],
-                    align: [0.5,1.0,0.0],
-                    translate: [-44,-20,1],
-                    size: [200, 200, 1.0],
-                    opacity: 1.0,
-                    log: true
-                  },
-                  onStart: function(e, data, timestamp) {
-                    console.log(e, data, timestamp);
-                  },
-                  onDrag: function(e, data, timestamp) {
-                    console.log(e, data, timestamp);
-                  },
-                  onStop: function(e, data, timestamp) {
-                    console.log(e, data, timestamp);
-                  }
-                },
-                {
-                  currentValue : 0.0,
-                  min: 0.0,
-                  max: 255.0,
-                  orient: 'is--vert',
-                  node: {
-                    origin: [0.5, 0.5, 0.0],
-                    translate: [0.0, 0.0, 0.0],
-                    size: [44, 44, 1.0],
-                    opacity: 0.3
-                  },
-                  container: {
-                    origin: [0.0, 1.0, 0.0],
-                    align: [0.5,1.0,0.0],
-                    translate: [0,-20,1],
-                    size: [200, 200, 1.0],
-                    opacity: 1.0,
-                    log: true
-                  },
-                  onStart: function(e, data, timestamp) {
-                    console.log(e, data, timestamp);
-                  },
-                  onDrag: function(e, data, timestamp) {
-                    console.log(e, data, timestamp);
-                  },
-                  onStop: function(e, data, timestamp) {
-                    console.log(e, data, timestamp);
-                  }
-                },
-                {
-                  currentValue : 0.0,
-                  min: 0.0,
-                  max: 255.0,
-                  orient: 'is--vert',
-                  node: {
-                    origin: [0.5, 0.5, 0.0],
-                    translate: [0.0, 0.0, 0.0],
-                    size: [44, 44, 1.0],
-                    opacity: 0.3
-                  },
-                  container: {
-                    origin: [0.0, 1.0, 0.0],
-                    align: [0.5,1.0,0.0],
-                    translate: [44,-20,1],
-                    size: [200, 200, 1.0],
-                    opacity: 1.0,
-                    log: true
-                  },
-                  onStart: function(e, data, timestamp) {
-                    console.log(e, data, timestamp);
-                  },
-                  onDrag: function(e, data, timestamp) {
-                    console.log(e, data, timestamp);
-                  },
-                  onStop: function(e, data, timestamp) {
-                    console.log(e, data, timestamp);
-                  }
-                },
+                $scope.sliders = [
+                //   {
+                //   currentValue : 0.0,
+                //   min: 0.0,
+                //   max: 50.0,
+                //   orient: 'is--vert',
+                //   node: {
+                //     origin: [0.0, 0.0, 0.0],
+                //     translate: [0.0, 0.0, 0.0],
+                //     size: [44, 44, 1.0],
+                //     opacity: 0.3
+                //   },
+                //   container: {
+                //     origin: [0.0, 1.0, 0.0],
+                //     align: [0.5,1.0,0.0],
+                //     translate: [-44,-20,1],
+                //     size: [200, 200, 1.0],
+                //     opacity: 1.0,
+                //     log: true
+                //   },
+                //   onStart: function(e, data, timestamp) {
+                //     console.log(e, data, timestamp);
+                //   },
+                //   onDrag: function(e, data, timestamp) {
+                //     console.log(e, data, timestamp);
+                //   },
+                //   onStop: function(e, data, timestamp) {
+                //     console.log(e, data, timestamp);
+                //   }
+                // },
+                // {
+                //   currentValue : 0.0,
+                //   min: 0.0,
+                //   max: 255.0,
+                //   orient: 'is--vert',
+                //   node: {
+                //     origin: [0.5, 0.5, 0.0],
+                //     translate: [0.0, 0.0, 0.0],
+                //     size: [44, 44, 1.0],
+                //     opacity: 0.3
+                //   },
+                //   container: {
+                //     origin: [0.0, 1.0, 0.0],
+                //     align: [0.5,1.0,0.0],
+                //     translate: [0,-20,1],
+                //     size: [200, 200, 1.0],
+                //     opacity: 1.0,
+                //     log: true
+                //   },
+                //   onStart: function(e, data, timestamp) {
+                //     console.log(e, data, timestamp);
+                //   },
+                //   onDrag: function(e, data, timestamp) {
+                //     console.log(e, data, timestamp);
+                //   },
+                //   onStop: function(e, data, timestamp) {
+                //     console.log(e, data, timestamp);
+                //   }
+                // },
+                // {
+                //   currentValue : 0.0,
+                //   min: 0.0,
+                //   max: 255.0,
+                //   orient: 'is--vert',
+                //   node: {
+                //     origin: [0.5, 0.5, 0.0],
+                //     translate: [0.0, 0.0, 0.0],
+                //     size: [44, 44, 1.0],
+                //     opacity: 0.3
+                //   },
+                //   container: {
+                //     origin: [0.0, 1.0, 0.0],
+                //     align: [0.5,1.0,0.0],
+                //     translate: [44,-20,1],
+                //     size: [200, 200, 1.0],
+                //     opacity: 1.0,
+                //     log: true
+                //   },
+                //   onStart: function(e, data, timestamp) {
+                //     console.log(e, data, timestamp);
+                //   },
+                //   onDrag: function(e, data, timestamp) {
+                //     console.log(e, data, timestamp);
+                //   },
+                //   onStop: function(e, data, timestamp) {
+                //     console.log(e, data, timestamp);
+                //   }
+                // },
                 {
                   currentValue : [0.0, 0.0],
                   min: [0.0, 0.0],
