@@ -107,7 +107,7 @@
               var touchmove = function(e) {
 
                   e.preventDefault();
-                  e.stopPropagation();
+                  // e.stopPropagation();
 
                   if( scope.uiOptions.orient === 'is--joystick' ) {
                     elem[0].parentNode.style.cursor = 'url("/assets/ui/slider-control-icon-transparent-cursor.png") 0 0, pointer';
@@ -130,7 +130,7 @@
                         (parseInt(parentTransform[13].trim()) +
                         parseInt(containerTransform[13].trim())) -
                         (handle[0].clientWidth / 2);
-
+                // console.log(newX, newY);
                 setPosition(newX, newY);
 
                 if( scope.uiOptions.orient === 'is--hor' ) {
@@ -312,7 +312,6 @@
 
               }
 
-              //TODO: Handle Touch Events
 
               if (scope.uiOptions.orient === 'is--joystick') {
                 setPosition(100 - ( handle[0].offsetWidth / 2 ), 100 - ( handle[0].offsetHeight / 2 ));

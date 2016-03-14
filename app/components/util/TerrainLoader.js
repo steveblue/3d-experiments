@@ -54,6 +54,8 @@ THREE.TerrainLoader.prototype = {
 
 		if ( window.location.hostname === 'localhost' ) {
 			request.open( 'GET', url, true );
+		} else if ( window.location.hostname === '192.168.1.13' ) {
+			request.open( 'GET', url, true );
 		} else {
 			request.open( 'GET', 'https://' + window.location.hostname + '/' + url, true );
 		}

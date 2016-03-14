@@ -6,7 +6,7 @@
    */
   define([],
     function (){
-      
+
       var SketchDirective = function( /* angular deps injection */ ){
             // Returns Directive Creation Object
             return {

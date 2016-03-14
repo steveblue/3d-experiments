@@ -92,7 +92,7 @@
 
                 $scope.model = TerrainModel;
                 $scope.world = SunsetWorld;
-
+                
                 $scope.containerNode = {
                   node: {
                     translate: [0,window.innerHeight - 240,1],
@@ -306,13 +306,13 @@
                     log: true
                   },
                   onStart: function(e, data, timestamp) {
-                    console.log(e, data, timestamp);
+                    // console.log(e, data, timestamp);
                   },
                   onDrag: function(e, data, timestamp) {
-                    console.log(e, data, timestamp);
+                    // console.log(e, data, timestamp);
                   },
                   onStop: function(e, data, timestamp) {
-                    console.log(e, data, timestamp);
+                    // console.log(e, data, timestamp);
                   }
                 },
                 {
@@ -335,13 +335,13 @@
                     log: true
                   },
                   onStart: function(e, data, timestamp) {
-                    console.log(e, data, timestamp);
+                    // console.log(e, data, timestamp);
                   },
                   onDrag: function(e, data, timestamp) {
-                    console.log(e, data, timestamp);
+                    // console.log(e, data, timestamp);
                   },
                   onStop: function(e, data, timestamp) {
-                    console.log(e, data, timestamp);
+                    // console.log(e, data, timestamp);
                   }
                 }];
 

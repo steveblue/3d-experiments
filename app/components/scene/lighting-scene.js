@@ -63,7 +63,7 @@
 
       cubeTexLoader.load( urls, function(tex) {
           var cubeShader = THREE.ShaderLib.cube;
-
+          // console.log(urls);
           cubeShader.uniforms.tCube.value = tex;
 
           var skyBoxMaterial = new THREE.ShaderMaterial({
@@ -141,7 +141,7 @@
       var scene = new Scene();
 
       scene.fetch('models/ned_1arcsec_g.dbf').then(function(data){
-        // console.log(data);
+        console.log(data);
         ratio = Math.round(Math.sqrt(data[0].length));
 
         this.mesh.geometry = new THREE.PlaneGeometry(ratio, ratio, ratio, ratio);
@@ -154,7 +154,7 @@
         this.mesh.geometry.verticesNeedUpdate = true;
         this.mesh.geometry.normalsNeedUpdate = true;
         this.mesh.geometry.computeVertexNormals();
-        // this.mesh.geometry.computeFaceNormals();
+        this.mesh.geometry.computeFaceNormals();
 
       }.bind(this));
 
@@ -172,25 +172,27 @@
 
       }.bind(this));
 
+      this.controls.update(this.clock.getDelta());
+
 
     };
 
 
     TerrainWorld.prototype.update = function() {
 
-
       this.controls.update(this.clock.getDelta());
-
+      
+      //
       this.mesh.geometry.verticesNeedUpdate = true;
       this.mesh.geometry.normalsNeedUpdate = true;
       this.mesh.geometry.computeVertexNormals();
       this.mesh.geometry.computeFaceNormals();
-
-
+      //
+      //
       this.renderer.render(this.scene, this.camera);
-
+      //
       this.frame++;
-
+      //
       window.requestAnimationFrame(this.update.bind(this));
 
     };
